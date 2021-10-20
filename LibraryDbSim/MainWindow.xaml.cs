@@ -24,7 +24,8 @@ namespace LibraryDbSim
         LibrarySystem lSystem = new LibrarySystem();
 
         //Variable to prevent multiple Create Account Windows opening
-        private bool IsCreateAccWindowOpen = false;
+        public static bool IsCreateAccWindowOpen = false;
+
 
         public MainWindow()
         {
@@ -70,7 +71,7 @@ namespace LibraryDbSim
                 IsCreateAccWindowOpen = true;
 
                 //Open new window for user to sign up
-                CreateAccount createAccWindow = new CreateAccount();
+                CreateAccount createAccWindow = new CreateAccount(lSystem);
                 createAccWindow.Show();
             }
         }

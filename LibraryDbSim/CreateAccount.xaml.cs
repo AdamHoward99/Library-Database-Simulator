@@ -20,8 +20,11 @@ namespace LibraryDbSim
     /// </summary>
     public partial class CreateAccount : Window
     {
-        public CreateAccount()
+        LibrarySystem lSystem;
+
+        public CreateAccount(LibrarySystem db)
         {
+            lSystem = db;
             InitializeComponent();
         }
 
@@ -38,10 +41,23 @@ namespace LibraryDbSim
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
             //Validate entered information
-            //if information is valid, add account to list
-            //else output error message
+            if(!string.IsNullOrWhiteSpace(NameTxtBox.Text) && !string.IsNullOrWhiteSpace(AgeTxtBox.Text) && EmailAccTxtBox.Text.Contains('@') && EmailAccTxtBox.Text.Length > 6
+                && !string.IsNullOrWhiteSpace(AccPasswordTxtBox.Password))
+            {
+                //A name and age has been entered, check if email is free to use
+                if(lSystem.AvailableEmailAddress(EmailAccTxtBox.Text))
+                {
+                    lSystem.AddAccountToSystem(Convert.ToInt16(AgeTxtBox.Text), NameTxtBox.Text, EmailAccTxtBox.Text, AccPasswordTxtBox.Password);
+                    this.Close();
+                    return;
+                }
 
+                //Email already contained on db
+                UpdateErrorLbl("Email already taken!");
+                return;
+            }
 
+            UpdateErrorLbl("Please enter all information!");
         }
 
         //Only used for textboxes which require only letters
@@ -74,6 +90,17 @@ namespace LibraryDbSim
             }
 
             e.CancelCommand();      //Pasted data is not string, ignore
+        }
+
+        private void CreateAccWindowClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow.IsCreateAccWindowOpen = false;
+        }
+
+        private void UpdateErrorLbl(string txt)
+        {
+            ErrorLbl2.Visibility = Visibility.Visible;
+            ErrorLbl2.Content = txt;
         }
     }
 }

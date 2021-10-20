@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryDbSim"
         mc:Ignorable="d"
-        Title="Create Account" Height="412" Width="420" ResizeMode="CanMinimize">
+        Title="Create Account" Height="412" Width="420" ResizeMode="CanMinimize" Closing="CreateAccWindowClose">
     <Grid>
         <Grid Margin="10">
             <Grid.RowDefinitions>
@@ -24,7 +24,7 @@
             <TextBox x:Name="EmailAccTxtBox" MaxLength="30" TextWrapping="NoWrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15, 80, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
             <PasswordBox x:Name="AccPasswordTxtBox" MaxLength="50" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="15, 120, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
             <Button x:Name="SignUpBtn" Content="Sign Up" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="60, 0, 60, 80" FontSize="16" Height="28" VerticalContentAlignment="Center" Click="SignUpBtn_Click"/>
-            <Label x:Name="Error2Lbl" Content="Default Error" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10, 0, 10, 15" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+            <Label x:Name="ErrorLbl2" Content="Default Error" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10, 0, 10, 40" HorizontalContentAlignment="Center" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDbSim
 {
-    class LibrarySystem
+    public class LibrarySystem
     {
         public LibrarySystem()
         {
@@ -35,6 +35,22 @@ namespace LibraryDbSim
             }
             errorFlag = 0;
             return false;
+        }
+
+        public bool AvailableEmailAddress(string email)
+        {
+            foreach(Account acc in Users)
+            {
+                if (acc.Email == email)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public void AddAccountToSystem(int age, string name, string email, string password)
+        {
+            Users.Add(new Account(age, name, email, password));
         }
 
         private void CreateBookCollection()     //TODO: To be replaced by database eventually
