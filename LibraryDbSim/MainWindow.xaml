@@ -1,0 +1,31 @@
+﻿<Window x:Class="LibraryDbSim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryDbSim"
+        mc:Ignorable="d"
+        Title="Library Database" Height="412" Width="420" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="LoginLbl" Content="Login" Grid.Column="1" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60, 76, 0, 0"/>
+            <TextBox x:Name="UsernameTxtBox" MaxLength="50" TextWrapping="NoWrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15, 10, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
+            <PasswordBox x:Name="PasswordTxtBox" MaxLength="50" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="15, 40, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
+            <Button x:Name="LoginBtn" Content="Sign In" Click="LoginBtn_Click" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="60, 0, 60, 70" FontSize="16" Height="28" VerticalContentAlignment="Center"/>
+            <Label x:Name="SignUpLbl" Content="Don't have an account, sign up" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10, 0, 40, 115" FontSize="10" Height="26" VerticalContentAlignment="Center" FontStyle="Italic" MouseDoubleClick="SignUpLbl_MouseDoubleClick" Cursor="Hand" MouseEnter="SignUpLbl_MouseEnter"/>
+            <Label x:Name="ErrorLbl" Content="Default Error" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10, 0, 10, 15" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+            <Label x:Name="ForgotPasswordLbl" Content="Forgot your password?" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 70, 25" Height="26" FontSize="10" FontStyle="Italic" Visibility="Hidden" MouseDoubleClick="ForgotPassword_MouseDoubleClick" Cursor="Hand"/>
+        </Grid>
+    </Grid>
+</Window>

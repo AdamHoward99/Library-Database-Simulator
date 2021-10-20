@@ -1,0 +1,17 @@
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\LibraryDbSim.exe.config
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\LibraryDbSim.exe
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\LibraryDbSim.pdb
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.csprojAssemblyReference.cache
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\MainWindow.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\App.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim_MarkupCompile.cache
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim_MarkupCompile.lref
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\MainWindow.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.g.resources
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.Properties.Resources.resources
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.csproj.GenerateResource.cache
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.csproj.CoreCompileInputs.cache
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.exe
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.pdb
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\CreateAccount.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\CreateAccount.baml
