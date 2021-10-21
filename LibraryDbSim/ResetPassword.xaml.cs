@@ -37,30 +37,36 @@ namespace LibraryDbSim
             //Validate Entered values
             if(string.IsNullOrWhiteSpace(EmailResTxtBox.Text) || string.IsNullOrWhiteSpace(NewPasswordBox.Password) || string.IsNullOrWhiteSpace(ConfirmPasswordBox.Password))
             {
-                Console.WriteLine("Please enter all information");
+                UpdateErrorLabel("Please enter all information!");
                 return;
             }
 
             if(lSystem.AvailableEmailAddress(EmailResTxtBox.Text))     //Email is not contained in the user database
             {
-                Console.WriteLine("Email not found");
+                UpdateErrorLabel("Email not found");
                 return;
             }
 
             if(NewPasswordBox.Password != ConfirmPasswordBox.Password)      //Password and confirm password are different values
             {
-                Console.WriteLine("Please confirm the same password");
+                UpdateErrorLabel("Passwords do not match");
                 return;
             }
 
             if(!lSystem.CheckNewUserPassword(EmailResTxtBox.Text, NewPasswordBox.Password))     //Entered password is same as current
             {
-                Console.WriteLine("Password is same as current");
+                UpdateErrorLabel("Password is same as current");
                 return;
             }
 
             //Validation Complete
             this.Close();
+        }
+
+        private void UpdateErrorLabel(string txt)
+        {
+            ErrorLbl3.Visibility = Visibility.Visible;
+            ErrorLbl3.Content = txt;
         }
     }
 }
