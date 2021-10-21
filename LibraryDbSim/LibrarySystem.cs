@@ -53,6 +53,16 @@ namespace LibraryDbSim
             Users.Add(new Account(age, name, email, password));
         }
 
+        public bool CheckNewUserPassword(string email, string newPassword) 
+        {
+            Account acc = Users.Find(a => a.Email == email);        //Find user with selected email
+            if (acc.Password == newPassword)        //Check if new password is the same as the current
+                return false;
+
+            acc.ChangePassword(newPassword);        //New password is not same as current, change password of this user
+            return true;
+        }
+
         private void CreateBookCollection()     //TODO: To be replaced by database eventually
         {
             BookCollection.Add(new Book("Of Mice and Men", "John Steinbeck", 4, new DateTime(1937, 11, 23)));

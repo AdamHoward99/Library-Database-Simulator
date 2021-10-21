@@ -23,9 +23,8 @@ namespace LibraryDbSim
         //Create Library System
         LibrarySystem lSystem = new LibrarySystem();
 
-        //Variable to prevent multiple Create Account Windows opening
-        public static bool IsCreateAccWindowOpen = false;
-
+        //Variable to prevent multiple other windows opening, max amount of windows is this + 1
+        public static bool IsAdditionalWindowOpen = false;
 
         public MainWindow()
         {
@@ -66,9 +65,9 @@ namespace LibraryDbSim
 
         private void SignUpLbl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(!IsCreateAccWindowOpen)
+            if(!IsAdditionalWindowOpen)
             {
-                IsCreateAccWindowOpen = true;
+                IsAdditionalWindowOpen = true;
 
                 //Open new window for user to sign up
                 CreateAccount createAccWindow = new CreateAccount(lSystem);
@@ -78,7 +77,12 @@ namespace LibraryDbSim
 
         private void ForgotPassword_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Open window to change password");
+            if(!IsAdditionalWindowOpen)
+            {
+                IsAdditionalWindowOpen = true;
+                ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
+                resetPasswordWindow.Show();
+            }
         }
 
         private void SignUpLbl_MouseEnter(object sender, MouseEventArgs e)

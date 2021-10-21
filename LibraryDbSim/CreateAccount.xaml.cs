@@ -94,7 +94,7 @@ namespace LibraryDbSim
 
         private void CreateAccWindowClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MainWindow.IsCreateAccWindowOpen = false;
+            MainWindow.IsAdditionalWindowOpen = false;
         }
 
         private void UpdateErrorLbl(string txt)

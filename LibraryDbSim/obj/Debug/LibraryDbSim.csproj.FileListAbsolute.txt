@@ -15,3 +15,5 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.exe
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.pdb
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\CreateAccount.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\CreateAccount.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ResetPassword.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ResetPassword.baml

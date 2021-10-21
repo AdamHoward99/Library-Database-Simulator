@@ -29,6 +29,8 @@ namespace LibraryDbSim
             CurrentRentedBooks.Remove(book);
         }
 
+        public void ChangePassword(string newPassword) => Password = newPassword;
+
         //Variables
         public string Email { get; private set; }
         public string Password { get; private set; }
