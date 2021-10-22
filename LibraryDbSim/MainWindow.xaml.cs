@@ -48,7 +48,9 @@ namespace LibraryDbSim
             //Validate Account details
             if (lSystem.AccountValid(UsernameTxtBox.Text, PasswordTxtBox.Password, out int error))
             {
-                Console.WriteLine("Account is on the system");      //TODO: Open new window for account
+                AccountWindow accWind = new AccountWindow();
+                accWind.Show();
+                this.Close();
                 return;
             }
 
