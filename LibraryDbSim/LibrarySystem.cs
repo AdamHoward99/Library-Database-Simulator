@@ -17,6 +17,8 @@ namespace LibraryDbSim
         public void AddDecoyAccounts()      //TODO: To be replaced by database eventually
         {
             Users.Add(new Account(22, "Adam", "example@gmail.com", "password"));
+            Users[0].AddBookToList(BookCollection[0]);      //In future, would be stored on a db
+
             Users.Add(new Account(50, "Jon", "jon@gmail.com", "jon"));
         }
 
@@ -39,19 +41,13 @@ namespace LibraryDbSim
 
         public bool AvailableEmailAddress(string email)
         {
-            foreach(Account acc in Users)
-            {
-                if (acc.Email == email)
-                    return false;
-            }
+            if (Users.Find(a => a.Email == email) == null)
+                return true;
 
-            return true;
+            return false;
         }
 
-        public void AddAccountToSystem(int age, string name, string email, string password)
-        {
-            Users.Add(new Account(age, name, email, password));
-        }
+        public void AddAccountToSystem(int age, string name, string email, string password) => Users.Add(new Account(age, name, email, password));
 
         public bool CheckNewUserPassword(string email, string newPassword) 
         {
@@ -62,6 +58,8 @@ namespace LibraryDbSim
             acc.ChangePassword(newPassword);        //New password is not same as current, change password of this user
             return true;
         }
+
+        public Account GetAccount(string email) => Users.Find(acc => acc.Email == email);       //Finds an account for account window based on email field
 
         private void CreateBookCollection()     //TODO: To be replaced by database eventually
         {

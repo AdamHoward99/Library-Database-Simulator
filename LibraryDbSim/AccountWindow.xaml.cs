@@ -19,9 +19,22 @@ namespace LibraryDbSim
     /// </summary>
     public partial class AccountWindow : Window
     {
-        public AccountWindow()
+        LibrarySystem lSystem;
+        Account thisAccount;        //Easier method of obtaining data from specific account
+
+        public AccountWindow(LibrarySystem lb, string accountEmail)
         {
             InitializeComponent();
+            lSystem = lb;
+
+            thisAccount = lb.GetAccount(accountEmail);      //Gets the account
+
+            //Output Account name
+            AccNameLbl.Content = $"Welcome {thisAccount.Name}";
+
+            //Output Account current rented books
+            foreach (Book b in thisAccount.GetCurrentRentedBooks())
+                CurrentRentedBooksListBox.Items.Add($"{b.Name}");
         }
     }
 }

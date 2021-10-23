@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDbSim
 {
-    class Account : IUser
+    public class Account : IUser
     {
         public Account() {}
         public Account(int age, string name, string email, string pass)
@@ -24,6 +24,9 @@ namespace LibraryDbSim
             CurrentRentedBooks.Add(book);
         }
 
+        //Used to output book list on account page
+        public List<Book> GetCurrentRentedBooks() => CurrentRentedBooks;
+
         public void RemoveBookFromList(Book book)
         {
             CurrentRentedBooks.Remove(book);
@@ -34,12 +37,9 @@ namespace LibraryDbSim
         //Variables
         public string Email { get; private set; }
         public string Password { get; private set; }
-        private string Name { get; set; }
+        public string Name { get; private set; }
         private int Age { get; set; }
         List<Book> CurrentRentedBooks;
         List<Book> PreviousRentedBooks;
-
-
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryDbSim
 {
-    class Book
+    public class Book
     {
         public Book() { }
         public Book(string n, string a, int s, DateTime pd)
@@ -18,7 +18,7 @@ namespace LibraryDbSim
         }
 
         //Variables
-        private string Name;
+        public string Name { get; private set; }
         private DateTime PublishDate;
         private int Stock;
         private string Author;

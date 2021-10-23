@@ -21,7 +21,7 @@ namespace LibraryDbSim
     public partial class MainWindow : Window
     {
         //Create Library System
-        LibrarySystem lSystem = new LibrarySystem();
+        LibrarySystem lSystem = new LibrarySystem();        //TODO: Store this data on a db, until then pass this class to all windows
 
         //Variable to prevent multiple other windows opening, max amount of windows is this + 1
         public static bool IsAdditionalWindowOpen = false;
@@ -48,7 +48,7 @@ namespace LibraryDbSim
             //Validate Account details
             if (lSystem.AccountValid(UsernameTxtBox.Text, PasswordTxtBox.Password, out int error))
             {
-                AccountWindow accWind = new AccountWindow();
+                AccountWindow accWind = new AccountWindow(lSystem, UsernameTxtBox.Text);     //Pass data on before closing
                 accWind.Show();
                 this.Close();
                 return;
