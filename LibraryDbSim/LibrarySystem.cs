@@ -75,7 +75,10 @@ namespace LibraryDbSim
             BookCollection.Add(new Book("Watership Down", "Richard Adams", 4, new DateTime(1972, 11, 1)));
         }
 
+        public Book GetRandomBook() => BookCollection[random.Next(0, BookCollection.Count)];
+
         private List<Account> Users;
         private List<Book> BookCollection = new List<Book>();      //Could move to another class?
+        private Random random = new Random();      //Used for simulating book renting (gets random book from collection)
     }
 }

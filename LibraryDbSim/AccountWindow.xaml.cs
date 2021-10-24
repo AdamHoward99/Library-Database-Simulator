@@ -36,5 +36,40 @@ namespace LibraryDbSim
             foreach (Book b in thisAccount.GetCurrentRentedBooks())
                 CurrentRentedBooksListBox.Items.Add($"{b.Name}");
         }
+
+        private void UpdateErrorLabel(string txt)
+        {
+            ErrorLbl3.Visibility = Visibility.Visible;
+            ErrorLbl3.Content = txt;
+        }
+
+        private void RentABook(object sender, RoutedEventArgs e)
+        {
+            //Simulates renting out a book by fetching random book which is not already rented by the user
+            Book bookToRent = lSystem.GetRandomBook();
+
+            //Book is currently out of stock
+            if(bookToRent.Stock == 0)
+            {
+                UpdateErrorLabel("Book is currently out of stock");
+                return;
+            }
+
+            //Check if book is already rented by user (cannot rent out book twice at same time)
+            if(thisAccount.GetCurrentRentedBooks().Find(b => b == bookToRent) == null)
+            {
+                //Reset error label
+                ErrorLbl3.Visibility = Visibility.Hidden;
+
+                //Book is not already rented by user
+                bookToRent.Stock--;
+                thisAccount.AddBookToList(bookToRent);
+                CurrentRentedBooksListBox.Items.Add($"{bookToRent.Name}");
+                return;
+            }
+
+            //Book is already rented by the user
+            UpdateErrorLabel("This book is already rented out");
+        }
     }
 }

@@ -21,10 +21,11 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="AccNameLbl" Content="Account Name" Grid.Column="1" FontSize="24" Margin="20,10,20,10" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="CurrentRentedBooksListBox" Grid.Row="1" Grid.Column="1" Margin="0, 40, 120, 0" />
-            <Button x:Name="RentBookBtn" Content="Rent a Book" Grid.Row="1" Grid.Column="1" Margin= "190,40,0,182" FontSize="16" Height="28" VerticalContentAlignment="Center"/>
+            <Button x:Name="RentBookBtn" Content="Rent a Book" Grid.Row="1" Grid.Column="1" Margin= "190,40,0,182" FontSize="16" Height="28" VerticalContentAlignment="Center" Click="RentABook"/>
             <Button x:Name="ReturnBookBtn" Content="Return Book" Grid.Row="1" Grid.Column="1" Margin="190,73,0,149" FontSize="16" Height="28" VerticalContentAlignment="Center"/>
             <Button x:Name="SettingsBtn" Content="Account Settings" Grid.Row="1" Grid.Column="1" Height="28" VerticalContentAlignment="Center" Margin="190,106,0,116" FontSize="14"/>
             <Button x:Name="LogoutBtn" Content="Logout" Grid.Row="1" Grid.Column="1" Height="28" VerticalContentAlignment="Center" Margin="190,139,0,83" FontSize="16"/>
+            <Label x:Name="ErrorLbl3" Content="Default Error" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin=" 50, 0, 50, 45" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>
