@@ -81,5 +81,20 @@ namespace LibraryDbSim
             //Close Window
             this.Close();
         }
+
+        private void ReturnBook(object sender, RoutedEventArgs e)
+        {
+            int removeBookPos = CurrentRentedBooksListBox.SelectedIndex;
+
+            //Make sure an item is selected
+            if (removeBookPos == -1)
+                return;
+
+            //Remove book from accounts rented book list
+            thisAccount.RemoveBookFromList(removeBookPos);
+
+            //Confirm window yes/no?, deadlines for books? 
+            CurrentRentedBooksListBox.Items.Remove(CurrentRentedBooksListBox.SelectedItem);
+        }
     }
 }

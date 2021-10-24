@@ -32,6 +32,8 @@ namespace LibraryDbSim
             CurrentRentedBooks.Remove(book);
         }
 
+        public void RemoveBookFromList(int index) => CurrentRentedBooks.RemoveAt(index);        //Alt. version of above function, tracks item to remove via index from item list on account window
+
         public void ChangePassword(string newPassword) => Password = newPassword;
 
         //Variables
