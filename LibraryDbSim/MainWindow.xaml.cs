@@ -26,12 +26,17 @@ namespace LibraryDbSim
         //Variable to prevent multiple other windows opening, max amount of windows is this + 1
         public static bool IsAdditionalWindowOpen = false;
 
-        public MainWindow()
+        public MainWindow()     //Initial Constructor used for initial startup of application
         {
             InitializeComponent();
-
             //Add Accounts, TODO: Get Accounts from database in the future
             lSystem.AddDecoyAccounts();
+        }
+
+        public MainWindow(LibrarySystem lb)     //Constructor used when returning to this window from the account window
+        {
+            InitializeComponent();
+            lSystem = lb;           //Saves any changes made
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)

@@ -71,5 +71,15 @@ namespace LibraryDbSim
             //Book is already rented by the user
             UpdateErrorLabel("This book is already rented out");
         }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            //Open up login window, passing along all data information
+            MainWindow resetWind = new MainWindow(lSystem);     //Keeps information present during runtime, when moving to db, information will be stored and the LibSystem class will not require parameterizing.
+            resetWind.Show();
+
+            //Close Window
+            this.Close();
+        }
     }
 }
