@@ -19,3 +19,15 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ResetPassword.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ResetPassword.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\AccountWindow.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\AccountWindow.baml
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\ControlzEx.dll
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\MahApps.Metro.dll
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\ControlzEx.pdb
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\ControlzEx.xml
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\MahApps.Metro.pdb
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\MahApps.Metro.xml
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\de\MahApps.Metro.resources.dll
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.csproj.CopyComplete
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\App.baml

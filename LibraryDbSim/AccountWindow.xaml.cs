@@ -96,5 +96,12 @@ namespace LibraryDbSim
             //Confirm window yes/no?, deadlines for books? 
             CurrentRentedBooksListBox.Items.Remove(CurrentRentedBooksListBox.SelectedItem);
         }
+
+        private void ChangeAccountSettings(object sender, RoutedEventArgs e)
+        {
+            //Open up a new window to change account settings, keep this window open
+            //change details(name, password, email?)
+            
+        }
     }
 }
