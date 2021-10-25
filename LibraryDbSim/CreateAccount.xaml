@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryDbSim"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="Create Account" Height="412" Width="420" ResizeMode="CanMinimize" Closing="CreateAccWindowClose">
     <Grid>
@@ -18,13 +19,95 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="SignUpLbl" Content="Enter Info" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 20, 0, 0"/>
-            <TextBox x:Name="NameTxtBox" MaxLength="20" TextWrapping="NoWrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15, 0, 15, 0" Height="24" FontSize="14" BorderThickness="1.5" PreviewTextInput="LetterTextBox_PreviewTextInput" DataObject.Pasting="LetterTextBox_Pasting"/>
-            <TextBox x:Name="AgeTxtBox" MaxLength="2" TextWrapping="NoWrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15, 40, 15, 0" Height="24" FontSize="14" BorderThickness="1.5" PreviewTextInput="NumberTextBox_PreviewTextInput" DataObject.Pasting="NumberTextBox_Pasting" />
-            <TextBox x:Name="EmailAccTxtBox" MaxLength="30" TextWrapping="NoWrap" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="15, 80, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
-            <PasswordBox x:Name="AccPasswordTxtBox" MaxLength="50" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="15, 120, 15, 0" Height="24" FontSize="14" BorderThickness="1.5"/>
-            <Button x:Name="SignUpBtn" Content="Sign Up" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="60, 0, 60, 80" FontSize="16" Height="28" VerticalContentAlignment="Center" Click="SignUpBtn_Click"/>
-            <Label x:Name="ErrorLbl2" Content="Default Error" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10, 0, 10, 40" HorizontalContentAlignment="Center" Visibility="Hidden"/>
+
+            <Label 
+                x:Name="SignUpLbl" 
+                Content="Enter Info" 
+                Grid.Column="1" 
+                FontSize="20" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="0, 20, 0, 0">
+            </Label>
+
+            <TextBox 
+                x:Name="NameTxtBox" 
+                MaxLength="20" 
+                TextWrapping="NoWrap" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                VerticalAlignment="Top" 
+                Margin="15, 0, 15, 0"
+                FontSize="14" 
+                BorderThickness="1.5" 
+                PreviewTextInput="LetterTextBox_PreviewTextInput" 
+                DataObject.Pasting="LetterTextBox_Pasting"
+                mah:TextBoxHelper.Watermark="Enter Name">
+            </TextBox>
+
+            <TextBox 
+                x:Name="AgeTxtBox" 
+                MaxLength="2" 
+                TextWrapping="NoWrap" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                VerticalAlignment="Top" 
+                Margin="15, 40, 15, 0" 
+                FontSize="14" 
+                BorderThickness="1.5"
+                PreviewTextInput="NumberTextBox_PreviewTextInput" 
+                DataObject.Pasting="NumberTextBox_Pasting"
+                mah:TextBoxHelper.Watermark="Enter Age">
+            </TextBox>
+
+            <TextBox 
+                x:Name="EmailAccTxtBox" 
+                MaxLength="30" 
+                TextWrapping="NoWrap" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                VerticalAlignment="Top" 
+                Margin="15, 80, 15, 0" 
+                FontSize="14" 
+                BorderThickness="1.5"
+                mah:TextBoxHelper.Watermark="Enter Email Address">
+            </TextBox>
+
+            <PasswordBox 
+                x:Name="AccPasswordTxtBox" 
+                MaxLength="50" 
+                Grid.Column="1" 
+                Grid.Row="1" 
+                VerticalAlignment="Top" 
+                Margin="15, 120, 15, 0" 
+                FontSize="14" 
+                BorderThickness="1.5"
+                mah:TextBoxHelper.Watermark="Enter Password">
+            </PasswordBox>
+
+            <Button 
+                x:Name="SignUpBtn" 
+                Content="Sign Up" 
+                Grid.Column="1" 
+                Grid.Row="1" 
+                VerticalAlignment="Bottom" 
+                Margin="60, 0, 60, 70" 
+                FontSize="16" 
+                VerticalContentAlignment="Center" 
+                Click="SignUpBtn_Click"
+                Style="{DynamicResource MahApps.Styles.Button.Square}">
+            </Button>
+
+            <Label 
+                x:Name="ErrorLbl2" 
+                Content="Default Error" 
+                Grid.Column="1" 
+                Grid.Row="1" 
+                VerticalAlignment="Bottom" 
+                Margin="10, 0, 10, 30" 
+                HorizontalContentAlignment="Center" 
+                Visibility="Hidden">
+            </Label>
         </Grid>
     </Grid>
 </Window>

@@ -94,11 +94,5 @@ namespace LibraryDbSim
             }
         }
 
-        private void SignUpLbl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //SignUpLbl.Foreground = new SolidColorBrush(Colors.Gray);
-            //Make text underlined when hovering over?
-            Console.WriteLine("It has entered the area");
-        }
     }
 }
