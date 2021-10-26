@@ -21,6 +21,7 @@ namespace LibraryDbSim
     {
         LibrarySystem lSystem;
         Account thisAccount;        //Easier method of obtaining data from specific account
+        public static bool IsAdditionalWindowOpen = false;
 
         public AccountWindow(LibrarySystem lb, string accountEmail)
         {
@@ -99,9 +100,12 @@ namespace LibraryDbSim
 
         private void ChangeAccountSettings(object sender, RoutedEventArgs e)
         {
-            //Open up a new window to change account settings, keep this window open
-            //change details(name, password, email?)
-            
+            if(!MainWindow.IsAdditionalWindowOpen)
+            {
+                MainWindow.IsAdditionalWindowOpen = true;
+                ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
+                resetPasswordWindow.Show();
+            }
         }
     }
 }
