@@ -61,6 +61,8 @@ namespace LibraryDbSim
 
         public Account GetAccount(string email) => Users.Find(acc => acc.Email == email);       //Finds an account for account window based on email field
 
+        public List<Book> GetBookCollection() => BookCollection;        //TODO: Find way around this, move book collection into its own class?
+
         private void CreateBookCollection()     //TODO: To be replaced by database eventually
         {
             BookCollection.Add(new Book("Of Mice and Men", "John Steinbeck", 4, new DateTime(1937, 11, 23)));
@@ -75,7 +77,7 @@ namespace LibraryDbSim
             BookCollection.Add(new Book("Watership Down", "Richard Adams", 4, new DateTime(1972, 11, 1)));
         }
 
-        public Book GetRandomBook() => BookCollection[random.Next(0, BookCollection.Count)];
+        public void ReturnBook(Book book) => BookCollection.Find(b => b == book).Stock++;
 
         private List<Account> Users;
         private List<Book> BookCollection = new List<Book>();      //Could move to another class?

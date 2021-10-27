@@ -93,6 +93,5 @@ namespace LibraryDbSim
                 resetPasswordWindow.Show();
             }
         }
-
     }
 }

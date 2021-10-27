@@ -7,95 +7,93 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="My Account" Height="450" Width="420" ResizeMode="NoResize">
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="250"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <Label 
-                x:Name="AccNameLbl" 
-                Content="Account Name" 
-                Grid.Column="1" 
-                FontSize="24" 
-                Margin="20,10,20,10" 
-                HorizontalContentAlignment="Center">
-            </Label>
+        <Label 
+            x:Name="AccNameLbl" 
+            Content="Account Name" 
+            Grid.Column="1" 
+            FontSize="24" 
+            Margin="20,10,20,10" 
+            HorizontalContentAlignment="Center">
+        </Label>
 
-            <ListBox 
-                x:Name="CurrentRentedBooksListBox" 
-                Grid.Row="1" 
-                Grid.Column="1" 
-                Margin="0, 40, 120, 0"
-                Style="{x:Null}">
-            </ListBox>
+        <ListBox 
+            x:Name="CurrentRentedBooksListBox" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            Margin="0, 40, 120, 0"
+            Style="{x:Null}">
+        </ListBox>
 
-            <Button 
-                x:Name="RentBookBtn" 
-                Content="Rent a Book" 
-                Grid.Row="1" 
-                Grid.Column="1" 
-                VerticalAlignment="Top"
-                Margin= "190,40,0,0" 
-                FontSize="16" 
-                VerticalContentAlignment="Center" 
-                Click="RentABook" 
-                Style="{DynamicResource MahApps.Styles.Button.Square}"/>
+        <Button 
+            x:Name="RentBookBtn" 
+            Content="Rent a Book" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalAlignment="Top"
+            Margin= "190,40,0,0" 
+            FontSize="16" 
+            VerticalContentAlignment="Center" 
+            Click="RentABook" 
+            Style="{DynamicResource MahApps.Styles.Button.Square}"/>
 
-            <Button 
-                x:Name="ReturnBookBtn" 
-                Content="Return Book" 
-                Grid.Row="1" 
-                Grid.Column="1"
-                VerticalAlignment="Top"
-                Margin="190,78,0,0" 
-                FontSize="16" 
-                VerticalContentAlignment="Center" 
-                Click="ReturnBook"
-                Style="{DynamicResource MahApps.Styles.Button.Square}">
-            </Button>
+        <Button 
+            x:Name="ReturnBookBtn" 
+            Content="Return Book" 
+            Grid.Row="1" 
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            Margin="190,78,0,0" 
+            FontSize="16" 
+            VerticalContentAlignment="Center" 
+            Click="ReturnBook"
+            Style="{DynamicResource MahApps.Styles.Button.Square}">
+        </Button>
 
-            <Button 
-                x:Name="SettingsBtn" 
-                Content="Reset Password" 
-                Grid.Row="1" 
-                Grid.Column="1" 
-                VerticalAlignment="Center"
-                Margin="190,116,0,103" 
-                FontSize="14" 
-                Click="ChangeAccountSettings"
-                Style="{DynamicResource MahApps.Styles.Button.Square}">
-            </Button>
+        <Button 
+            x:Name="SettingsBtn" 
+            Content="Reset Password" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalAlignment="Center"
+            Margin="190,116,0,103" 
+            FontSize="14" 
+            Click="ChangeAccountSettings"
+            Style="{DynamicResource MahApps.Styles.Button.Square}">
+        </Button>
 
-            <Button 
-                x:Name="LogoutBtn" 
-                Content="Logout" 
-                Grid.Row="1" 
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                Margin="190,152,0,64" 
-                FontSize="16"
-                Click="Logout"
-                Style="{DynamicResource MahApps.Styles.Button.Square}" Height="34"/>
+        <Button 
+            x:Name="LogoutBtn" 
+            Content="Logout" 
+            Grid.Row="1" 
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Margin="190,152,0,64" 
+            FontSize="16"
+            Click="Logout"
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="34"/>
 
-            <Label 
-                x:Name="ErrorLbl3" 
-                Content="Default Error" 
-                Grid.Row="2" 
-                Grid.Column="1" 
-                VerticalContentAlignment="Center" 
-                HorizontalContentAlignment="Center" 
-                Margin=" 50, 0, 50, 45" 
-                Visibility="Hidden">
-            </Label>
-        </Grid>
+        <Label 
+            x:Name="ErrorLbl3" 
+            Content="Default Error" 
+            Grid.Row="2" 
+            Grid.Column="1" 
+            VerticalContentAlignment="Center" 
+            HorizontalContentAlignment="Center" 
+            Margin=" 50, 0, 50, 45" 
+            Visibility="Hidden">
+        </Label>
     </Grid>
 </Window>

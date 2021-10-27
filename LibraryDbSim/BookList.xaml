@@ -1,0 +1,78 @@
+﻿<Window x:Class="LibraryDbSim.BookList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryDbSim"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Books Available" Height="450" Width="570">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="320"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label
+            x:Name="BooksAvailableLbl"
+            Content="Books Available"
+            FontSize="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="207,10,197,0" Height="37" Width="148"/>
+
+        <DataGrid 
+            x:Name="dataGrid"
+            AutoGenerateColumns="False"
+            Margin="0,70,0,0"
+            IsReadOnly="True"
+            SelectionMode="Single" 
+            >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Title" 
+                    Binding="{Binding Name}" 
+                    CanUserResize="False" 
+                    CanUserReorder="False">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Header="Author" 
+                    Binding="{Binding Author}"
+                    CanUserResize="False"
+                    CanUserReorder="False">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn 
+                    Header="Stock" 
+                    Binding="{Binding Stock}"
+                    CanUserResize="False"
+                    CanUserReorder="False">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn 
+                    Header="Publish Date"
+                    Binding="{Binding PublishDate.Date, StringFormat=\{0:d/M/yyyy\}}"
+                    CanUserResize="False"
+                    CanUserReorder="False"
+                    >
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button
+            x:Name="SelectBookBtn"
+            Click="Btn_Click"
+            Content="select book"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            Margin="207,36,225,13"
+            Grid.Row="1" 
+            Style="{DynamicResource MahApps.Styles.Button.Square}">
+        </Button>
+
+
+    </Grid>
+</Window>

@@ -7,108 +7,105 @@
         xmlns:local="clr-namespace:LibraryDbSim"
         mc:Ignorable="d"
         Title="Library Database" Height="412" Width="420" ResizeMode="CanMinimize">
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="125"/>
-                <RowDefinition Height="200"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label 
-                x:Name="LoginLbl" 
-                Content="Login" 
-                Grid.Column="1" 
-                FontSize="24" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center" 
-                Margin="60,73,0,10">
-            </Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label 
+            x:Name="LoginLbl" 
+            Content="Login" 
+            Grid.Column="1" 
+            FontSize="24" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Margin="60,73,0,10">
+        </Label>
 
-            <TextBox 
-                x:Name="UsernameTxtBox"
-                mah:TextBoxHelper.Watermark="Enter Email Address"
-                MaxLength="50" 
-                TextWrapping="NoWrap" 
-                Grid.Row="1" 
-                Grid.Column="1" 
-                VerticalAlignment="Top"
-                Margin="15, 10, 15, 0"  
-                FontSize="14" 
-                BorderThickness="1.5">
-            </TextBox>
+        <TextBox 
+            x:Name="UsernameTxtBox"
+            mah:TextBoxHelper.Watermark="Enter Email Address"
+            MaxLength="50" 
+            TextWrapping="NoWrap" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalAlignment="Top"
+            Margin="15, 10, 15, 0"  
+            FontSize="14" 
+            BorderThickness="1.5">
+        </TextBox>
 
-            <PasswordBox 
-                mah:TextBoxHelper.Watermark="Enter Password" 
-                x:Name="PasswordTxtBox" 
-                MaxLength="50" 
-                Grid.Column="1" 
-                Grid.Row="1" 
-                VerticalAlignment="Top"
-                Margin="15,45,15,0" 
-                FontSize="14" 
-                BorderThickness="1.5">
-            </PasswordBox>
+        <PasswordBox 
+            mah:TextBoxHelper.Watermark="Enter Password" 
+            x:Name="PasswordTxtBox" 
+            MaxLength="50" 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            VerticalAlignment="Top"
+            Margin="15,45,15,0" 
+            FontSize="14" 
+            BorderThickness="1.5">
+        </PasswordBox>
 
-            <Button 
-                Style="{DynamicResource MahApps.Styles.Button.Square}" 
-                x:Name="LoginBtn" 
-                Content="Sign In" 
-                Click="LoginBtn_Click" 
-                Grid.Column="1" 
-                Grid.Row="1" 
-                VerticalAlignment="Bottom" 
-                Margin="60,0,60,46" 
-                FontSize="16" 
-                VerticalContentAlignment="Center">
-            </Button>
+        <Button 
+            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+            x:Name="LoginBtn" 
+            Content="Sign In" 
+            Click="LoginBtn_Click" 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            VerticalAlignment="Bottom" 
+            Margin="60,0,60,46" 
+            FontSize="16" 
+            VerticalContentAlignment="Center">
+        </Button>
 
-            <Label 
-                x:Name="SignUpLbl" 
-                Content="Don't have an account, sign up" 
-                Grid.Column="1" 
-                Grid.Row="1" 
-                VerticalAlignment="Bottom" 
-                Margin="12,0,38,102" 
-                FontSize="10" 
-                VerticalContentAlignment="Center" 
-                FontStyle="Italic" 
-                MouseDoubleClick="SignUpLbl_MouseDoubleClick" 
-                Cursor="Hand">
-            </Label>
+        <Label 
+            x:Name="SignUpLbl" 
+            Content="Don't have an account, sign up" 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            VerticalAlignment="Bottom" 
+            Margin="12,0,38,102" 
+            FontSize="10" 
+            VerticalContentAlignment="Center" 
+            FontStyle="Italic" 
+            MouseDoubleClick="SignUpLbl_MouseDoubleClick" 
+            Cursor="Hand">
+        </Label>
 
-            <Label 
-                x:Name="ErrorLbl" 
-                Content="Default Error" 
-                Grid.Column="1" 
-                Grid.Row="1" 
-                VerticalAlignment="Bottom" 
-                Margin="10,0" 
-                HorizontalContentAlignment="Center" 
-                Visibility="Hidden">
-            </Label>
-            
-            <Label 
-                x:Name="ForgotPasswordLbl" 
-                Content="Forgot your password?" 
-                Grid.Row="1" 
-                Grid.Column="1" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" 
-                Margin="12,90,81,84" 
-                Height="26" 
-                FontSize="10" 
-                FontStyle="Italic" 
-                Visibility="Hidden" 
-                MouseDoubleClick="ForgotPassword_MouseDoubleClick" 
-                Cursor="Hand">
-            </Label>
-            
-        </Grid>
+        <Label 
+            x:Name="ErrorLbl" 
+            Content="Default Error" 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            VerticalAlignment="Bottom" 
+            Margin="10,0" 
+            HorizontalContentAlignment="Center" 
+            Visibility="Hidden">
+        </Label>
+        
+        <Label 
+            x:Name="ForgotPasswordLbl" 
+            Content="Forgot your password?" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Margin="12,90,81,84" 
+            Height="26" 
+            FontSize="10" 
+            FontStyle="Italic" 
+            Visibility="Hidden" 
+            MouseDoubleClick="ForgotPassword_MouseDoubleClick" 
+            Cursor="Hand">
+        </Label>
     </Grid>
 </Window>

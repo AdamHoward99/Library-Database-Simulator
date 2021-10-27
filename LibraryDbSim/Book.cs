@@ -19,8 +19,8 @@ namespace LibraryDbSim
 
         //Variables
         public string Name { get; private set; }
-        private DateTime PublishDate;
+        public DateTime PublishDate { get; private set; }
         public int Stock { get; set; }
-        private string Author;
+        public string Author { get; private set; }
     }
 }

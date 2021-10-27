@@ -46,31 +46,28 @@ namespace LibraryDbSim
 
         private void RentABook(object sender, RoutedEventArgs e)
         {
-            //Simulates renting out a book by fetching random book which is not already rented by the user
-            Book bookToRent = lSystem.GetRandomBook();
+            //Goto rent book window
+            BookList bl = new BookList(lSystem);
+            bl.ShowDialog();
 
-            //Book is currently out of stock
-            if(bookToRent.Stock == 0)
+            if(BookList.chosenBook != null)     //A book was chosen in the book list window
             {
-                UpdateErrorLabel("Book is currently out of stock");
-                return;
+                //Check if book is already rented by this used, TODO: in future pass account to book list to check this there
+                if(thisAccount.GetCurrentRentedBooks().Find(b => b == BookList.chosenBook) == null)
+                {
+                    //Reset Error Label
+                    ErrorLbl3.Visibility = Visibility.Hidden;
+
+                    //Add book to account
+                    BookList.chosenBook.Stock--;
+                    thisAccount.AddBookToList(BookList.chosenBook);
+                    CurrentRentedBooksListBox.Items.Add($"{BookList.chosenBook.Name}");
+                }
+
+                BookList.chosenBook = null;
             }
 
-            //Check if book is already rented by user (cannot rent out book twice at same time)
-            if(thisAccount.GetCurrentRentedBooks().Find(b => b == bookToRent) == null)
-            {
-                //Reset error label
-                ErrorLbl3.Visibility = Visibility.Hidden;
-
-                //Book is not already rented by user
-                bookToRent.Stock--;
-                thisAccount.AddBookToList(bookToRent);
-                CurrentRentedBooksListBox.Items.Add($"{bookToRent.Name}");
-                return;
-            }
-
-            //Book is already rented by the user
-            UpdateErrorLabel("This book is already rented out");
+            return;
         }
 
         private void Logout(object sender, RoutedEventArgs e)
@@ -93,6 +90,9 @@ namespace LibraryDbSim
 
             //Remove book from accounts rented book list
             thisAccount.RemoveBookFromList(removeBookPos);
+
+            //Add to stock of book
+            //lSystem.ReturnBook();
 
             //Confirm window yes/no?, deadlines for books? 
             CurrentRentedBooksListBox.Items.Remove(CurrentRentedBooksListBox.SelectedItem);

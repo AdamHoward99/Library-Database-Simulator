@@ -31,3 +31,5 @@ C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\Microsoft.Xaml.Behaviors.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Debug\de\MahApps.Metro.resources.dll
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\LibraryDbSim.csproj.CopyComplete
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\App.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\BookList.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\BookList.baml
