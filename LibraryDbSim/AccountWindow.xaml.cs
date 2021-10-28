@@ -33,9 +33,8 @@ namespace LibraryDbSim
             //Output Account name
             AccNameLbl.Content = $"Welcome {thisAccount.Name}";
 
-            //Output Account current rented books
-            foreach (Book b in thisAccount.GetCurrentRentedBooks())
-                CurrentRentedBooksListBox.Items.Add($"{b.Name}");
+            //Output all rented books by this user
+            RentedBooksData.ItemsSource = thisAccount.GetCurrentRentedBooks();
         }
 
         private void UpdateErrorLabel(string txt)
@@ -61,7 +60,7 @@ namespace LibraryDbSim
                     //Add book to account
                     BookList.chosenBook.Stock--;
                     thisAccount.AddBookToList(BookList.chosenBook);
-                    CurrentRentedBooksListBox.Items.Add($"{BookList.chosenBook.Name}");
+                    RentedBooksData.Items.Refresh();
                 }
 
                 BookList.chosenBook = null;
@@ -82,20 +81,20 @@ namespace LibraryDbSim
 
         private void ReturnBook(object sender, RoutedEventArgs e)
         {
-            int removeBookPos = CurrentRentedBooksListBox.SelectedIndex;
+            int removeBookPos = RentedBooksData.SelectedIndex;
 
             //Make sure an item is selected
             if (removeBookPos == -1)
                 return;
 
+            //Add to stock of book
+            lSystem.ReturnBook(RentedBooksData.Items[RentedBooksData.SelectedIndex] as Book);
+
             //Remove book from accounts rented book list
             thisAccount.RemoveBookFromList(removeBookPos);
 
-            //Add to stock of book
-            //lSystem.ReturnBook();
-
-            //Confirm window yes/no?, deadlines for books? 
-            CurrentRentedBooksListBox.Items.Remove(CurrentRentedBooksListBox.SelectedItem);
+            //Confirm window yes/no?, deadlines for books?
+            RentedBooksData.Items.Refresh();
         }
 
         private void ChangeAccountSettings(object sender, RoutedEventArgs e)

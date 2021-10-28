@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:LibraryDbSim"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="My Account" Height="450" Width="420" ResizeMode="NoResize">
+        Title="My Account" Height="460" Width="735" ResizeMode="NoResize">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="250"/>
+            <RowDefinition Height="86"/>
+            <RowDefinition Height="300"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="19"/>
+            <ColumnDefinition Width="650"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Label 
-            x:Name="AccNameLbl" 
+            x:Name="AccNameLbl"
             Content="Account Name" 
             Grid.Column="1" 
             FontSize="24" 
@@ -29,61 +29,77 @@
             HorizontalContentAlignment="Center">
         </Label>
 
-        <ListBox 
-            x:Name="CurrentRentedBooksListBox" 
-            Grid.Row="1" 
-            Grid.Column="1" 
-            Margin="0, 40, 120, 0"
-            Style="{x:Null}">
-        </ListBox>
+        <DataGrid 
+            x:Name="RentedBooksData"
+            AutoGenerateColumns="False"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="0,55,0,0"
+            IsReadOnly="True"
+            SelectionMode="Single"
+            mah:DataGridHelper.CellPadding="5"
+            mah:DataGridHelper.ColumnHeaderPadding="5"
+            >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Title"
+                    Binding="{Binding Name}"
+                    CanUserResize="False"
+                    CanUserReorder="False"
+                    CanUserSort="False">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Button 
             x:Name="RentBookBtn" 
             Content="Rent a Book" 
             Grid.Row="1" 
             Grid.Column="1" 
-            VerticalAlignment="Top"
-            Margin= "190,40,0,0" 
-            FontSize="16" 
+            VerticalAlignment="Top" 
+            FontSize="16"
+            HorizontalAlignment="Left"
             VerticalContentAlignment="Center" 
             Click="RentABook" 
-            Style="{DynamicResource MahApps.Styles.Button.Square}"/>
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120"/>
 
         <Button 
             x:Name="ReturnBookBtn" 
             Content="Return Book" 
             Grid.Row="1" 
             Grid.Column="1"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="190,78,0,0" 
+            Margin="175,0,0,0" 
             FontSize="16" 
             VerticalContentAlignment="Center" 
             Click="ReturnBook"
-            Style="{DynamicResource MahApps.Styles.Button.Square}">
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120">
         </Button>
 
         <Button 
             x:Name="SettingsBtn" 
             Content="Reset Password" 
             Grid.Row="1" 
-            Grid.Column="1" 
-            VerticalAlignment="Center"
-            Margin="190,116,0,103" 
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="361,0,0,0" 
             FontSize="14" 
             Click="ChangeAccountSettings"
-            Style="{DynamicResource MahApps.Styles.Button.Square}">
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120">
         </Button>
 
         <Button 
             x:Name="LogoutBtn" 
             Content="Logout" 
-            Grid.Row="1" 
             Grid.Column="1"
-            VerticalAlignment="Center"
-            Margin="190,152,0,64" 
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" 
             FontSize="16"
             Click="Logout"
-            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="34"/>
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="34" Width="120" Grid.Row="1"/>
 
         <Label 
             x:Name="ErrorLbl3" 
@@ -92,7 +108,7 @@
             Grid.Column="1" 
             VerticalContentAlignment="Center" 
             HorizontalContentAlignment="Center" 
-            Margin=" 50, 0, 50, 45" 
+            Margin="50,0,50,4" 
             Visibility="Hidden">
         </Label>
     </Grid>
