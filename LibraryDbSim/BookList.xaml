@@ -55,8 +55,14 @@
                     Header="Publish Date"
                     Binding="{Binding PublishDate.Date, StringFormat=\{0:d/M/yyyy\}}"
                     CanUserResize="False"
-                    CanUserReorder="False"
-                    >
+                    CanUserReorder="False">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Header="Genre"
+                    Binding="{Binding Category}"
+                    CanUserResize="False"
+                    CanUserReorder="False">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

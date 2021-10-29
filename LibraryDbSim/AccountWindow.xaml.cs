@@ -57,6 +57,9 @@ namespace LibraryDbSim
                     //Reset Error Label
                     ErrorLbl3.Visibility = Visibility.Hidden;
 
+                    //Set Rented Date to today
+                    BookList.chosenBook.RentDate = DateTime.Now;
+
                     //Add book to account
                     BookList.chosenBook.Stock--;
                     thisAccount.AddBookToList(BookList.chosenBook);

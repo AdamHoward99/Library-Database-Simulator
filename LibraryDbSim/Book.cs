@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace LibraryDbSim
 {
+    public enum BookCategories { Action, Drama, Horror, Romance, Fantasy, Fiction, Non_Fiction };
+
     public class Book
     {
         public Book() { }
-        public Book(string n, string a, int s, DateTime pd)
+        public Book(string n, string a, int s, DateTime pd, BookCategories category)
         {
             this.Name = n;
             this.Author = a;
             this.Stock = s;
             this.PublishDate = pd;
+            this.Category = category;
         }
 
         //Variables
@@ -22,5 +25,8 @@ namespace LibraryDbSim
         public DateTime PublishDate { get; private set; }
         public int Stock { get; set; }
         public string Author { get; private set; }
+        public BookCategories Category { get; private set; }
+
+        public DateTime RentDate { get; set; }
     }
 }

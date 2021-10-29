@@ -49,6 +49,14 @@
                     CanUserReorder="False"
                     CanUserSort="False">
                 </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Header="Rented On"
+                    Binding="{Binding RentDate, StringFormat=\{0:d/M/yyyy\}}"
+                    CanUserResize="False"
+                    CanUserReorder="False"
+                    CanUserSort="False">
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
