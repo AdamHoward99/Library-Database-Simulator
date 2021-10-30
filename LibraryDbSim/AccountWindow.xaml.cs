@@ -49,6 +49,10 @@ namespace LibraryDbSim
             BookList bl = new BookList(lSystem);
             bl.ShowDialog();
 
+            //Select rent period for book
+            SelectRentTime selectRentTime = new SelectRentTime();
+            selectRentTime.ShowDialog();
+
             if(BookList.chosenBook != null)     //A book was chosen in the book list window
             {
                 //Check if book is already rented by this used, TODO: in future pass account to book list to check this there
@@ -106,7 +110,7 @@ namespace LibraryDbSim
             {
                 MainWindow.IsAdditionalWindowOpen = true;
                 ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
-                resetPasswordWindow.Show();
+                resetPasswordWindow.ShowDialog();
             }
         }
     }

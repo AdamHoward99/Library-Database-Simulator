@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryDbSim"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Books Available" Height="450" Width="570">
+        Title="Books Available" Height="450" Width="570" ResizeMode="NoResize">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="320"/>

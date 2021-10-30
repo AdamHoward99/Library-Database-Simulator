@@ -80,7 +80,7 @@ namespace LibraryDbSim
 
                 //Open new window for user to sign up
                 CreateAccount createAccWindow = new CreateAccount(lSystem);
-                createAccWindow.Show();
+                createAccWindow.ShowDialog();
             }
         }
 
@@ -90,7 +90,7 @@ namespace LibraryDbSim
             {
                 IsAdditionalWindowOpen = true;
                 ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
-                resetPasswordWindow.Show();
+                resetPasswordWindow.ShowDialog();
             }
         }
     }
