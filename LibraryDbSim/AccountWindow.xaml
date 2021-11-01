@@ -39,6 +39,8 @@
             SelectionMode="Single"
             mah:DataGridHelper.CellPadding="5"
             mah:DataGridHelper.ColumnHeaderPadding="5"
+            GotFocus="BookListFocus"
+            LostFocus="BookListLostFocus"
             >
 
             <DataGrid.Columns>
@@ -70,7 +72,7 @@
         </DataGrid>
 
         <Button 
-            x:Name="RentBookBtn" 
+            x:Name="RentBookBtn"
             Content="Rent a Book" 
             Grid.Row="1" 
             Grid.Column="1" 
@@ -79,8 +81,23 @@
             HorizontalAlignment="Left"
             VerticalContentAlignment="Center" 
             Click="RentABook" 
-            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120"/>
+            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+            Height="33" 
+            Width="110"/>
 
+        <Button
+            x:Name="ExtendDurationBtn"
+            Content="Extend Duration"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="14"
+            Style="{DynamicResource MahApps.Styles.Button.Square}"
+            Height="33"
+            Width="120"
+            Margin="265,0,260,266"
+            IsEnabled="False"
+            Click="ExtendBookDuration"/>
+        
         <Button 
             x:Name="ReturnBookBtn" 
             Content="Return Book" 
@@ -88,11 +105,13 @@
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="175,0,0,0" 
+            Margin="130,0,0,0" 
             FontSize="16" 
             VerticalContentAlignment="Center" 
             Click="ReturnBook"
-            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120">
+            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+            Height="33" 
+            Width="110">
         </Button>
 
         <Button 
@@ -102,10 +121,12 @@
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="361,0,0,0" 
+            Margin="411,0,0,0" 
             FontSize="14" 
             Click="ChangeAccountSettings"
-            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="33" Width="120">
+            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+            Height="33" 
+            Width="120">
         </Button>
 
         <Button 
@@ -116,7 +137,10 @@
             VerticalAlignment="Top" 
             FontSize="16"
             Click="Logout"
-            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="34" Width="120" Grid.Row="1"/>
+            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+            Height="34" 
+            Width="90" 
+            Grid.Row="1"/>
 
         <Label 
             x:Name="ErrorLbl3" 

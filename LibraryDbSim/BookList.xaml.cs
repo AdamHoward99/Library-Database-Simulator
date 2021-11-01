@@ -41,10 +41,6 @@ namespace LibraryDbSim
             if(dataGrid.SelectedIndex != -1)
                 chosenBook = dataGrid.Items[dataGrid.SelectedIndex] as Book;        //Stores book chosen to be added to account in accountwindow
 
-            //Open rent window to select return date of book
-            //SelectRentTime selectRentTime = new SelectRentTime();
-            //selectRentTime.ShowDialog();
-
             this.Close();
         }
     }

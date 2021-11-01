@@ -49,6 +49,10 @@ namespace LibraryDbSim
             BookList bl = new BookList(lSystem);
             bl.ShowDialog();
 
+            //Ensure a book was chosen before opening next window
+            if (BookList.chosenBook == null)
+                return;
+
             //Select rent period for book
             SelectRentTime selectRentTime = new SelectRentTime();
             selectRentTime.ShowDialog();
@@ -112,6 +116,14 @@ namespace LibraryDbSim
                 ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
                 resetPasswordWindow.ShowDialog();
             }
+        }
+       
+        private void BookListLostFocus(object sender, RoutedEventArgs e) => ExtendDurationBtn.IsEnabled = false;
+        private void BookListFocus(object sender, RoutedEventArgs e) => ExtendDurationBtn.IsEnabled = true;
+
+        private void ExtendBookDuration(object sender, RoutedEventArgs e)
+        {
+            //Open new window to extend date, similar to selectRentTime Window
         }
     }
 }
