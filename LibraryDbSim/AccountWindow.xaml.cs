@@ -117,13 +117,19 @@ namespace LibraryDbSim
                 resetPasswordWindow.ShowDialog();
             }
         }
-       
-        private void BookListLostFocus(object sender, RoutedEventArgs e) => ExtendDurationBtn.IsEnabled = false;
-        private void BookListFocus(object sender, RoutedEventArgs e) => ExtendDurationBtn.IsEnabled = true;
 
         private void ExtendBookDuration(object sender, RoutedEventArgs e)
         {
+            //Check if a book is selected
+            if (RentedBooksData.SelectedItem == null)
+                return;
+
             //Open new window to extend date, similar to selectRentTime Window
+            ExtendDuration extendDuration = new ExtendDuration(thisAccount.GetCurrentRentedBooks()[RentedBooksData.SelectedIndex]);
+            extendDuration.ShowDialog();
+
+            //Obtain new date for book from extend duration window
+            RentedBooksData.Items.Refresh();
         }
     }
 }

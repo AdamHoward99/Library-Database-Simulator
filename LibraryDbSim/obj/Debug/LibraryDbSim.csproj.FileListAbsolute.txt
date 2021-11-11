@@ -35,3 +35,5 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\BookList.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\BookList.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\SelectRentTime.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\SelectRentTime.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ExtendDuration.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Debug\ExtendDuration.baml

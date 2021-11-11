@@ -77,6 +77,9 @@
     <Compile Include="CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtendDuration.xaml.cs">
+      <DependentUpon>ExtendDuration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibrarySystem.cs" />
     <Compile Include="ResetPassword.xaml.cs">
       <DependentUpon>ResetPassword.xaml</DependentUpon>
@@ -93,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExtendDuration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

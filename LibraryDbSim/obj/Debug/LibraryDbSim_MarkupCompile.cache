@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\adamh\source\repos\AdamHoward99\Library-Database-Simulator\LibraryDbSim\App.xaml
-6970768296
+7-758087345
 
-141662780282
+151188804844
 20-2018215208
-AccountWindow.xaml;BookList.xaml;CreateAccount.xaml;MainWindow.xaml;ResetPassword.xaml;SelectRentTime.xaml;
+AccountWindow.xaml;BookList.xaml;CreateAccount.xaml;ExtendDuration.xaml;MainWindow.xaml;ResetPassword.xaml;SelectRentTime.xaml;
 
 True
 

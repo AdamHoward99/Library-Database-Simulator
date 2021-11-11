@@ -1,0 +1,60 @@
+﻿<Window x:Class="LibraryDbSim.ExtendDuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryDbSim"
+        mc:Ignorable="d"
+        Title="Extend Book Duration" Height="315" Width="400" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label
+            x:Name="ExtendLbl"
+            Content="Select New Return Date"
+            Grid.Column="1"
+            FontSize="20"
+            Margin="10"
+            HorizontalContentAlignment="Center"/>
+
+        <DatePicker
+            x:Name="ExtendDatePicker"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10,40,10,70" 
+            FirstDayOfWeek="Monday"
+            Focusable="False">
+        </DatePicker>
+
+        <Button
+            x:Name="ConfirmBtn"
+            Content="Confirm Date"
+            Grid.Column="1"
+            Grid.Row="2"
+            Margin="0,15,160,10"
+            Style="{DynamicResource MahApps.Styles.Button.Square}"
+            FontSize="16" Click="ConfirmBtn_Click">
+        </Button>
+
+        <Button
+            x:Name="CancelBtn"
+            Content="Cancel"
+            Grid.Column="1"
+            Grid.Row="2"
+            Margin="160, 15, 0, 10"
+            Style="{DynamicResource MahApps.Styles.Button.Square}"
+            FontSize="16" Click="CancelBtn_Click">
+        </Button>
+
+    </Grid>
+</Window>

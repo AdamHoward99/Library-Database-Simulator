@@ -39,8 +39,6 @@
             SelectionMode="Single"
             mah:DataGridHelper.CellPadding="5"
             mah:DataGridHelper.ColumnHeaderPadding="5"
-            GotFocus="BookListFocus"
-            LostFocus="BookListLostFocus"
             >
 
             <DataGrid.Columns>
@@ -95,7 +93,6 @@
             Height="33"
             Width="120"
             Margin="265,0,260,266"
-            IsEnabled="False"
             Click="ExtendBookDuration"/>
         
         <Button 
