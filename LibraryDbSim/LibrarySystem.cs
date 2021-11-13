@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySqlConnector;
 
 namespace LibraryDbSim
 {
@@ -41,10 +42,16 @@ namespace LibraryDbSim
 
         public bool AvailableEmailAddress(string email)
         {
-            if (Users.Find(a => a.Email == email) == null)
-                return true;
+            MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
+            connection.Open();
 
-            return false;
+            MySqlCommand selectCmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email)", connection);
+            selectCmd.Parameters.AddWithValue("@email", email);
+            MySqlDataReader reader = selectCmd.ExecuteReader();
+            if (reader.HasRows)
+                return false;
+
+            return true;
         }
 
         public void AddAccountToSystem(int age, string name, string email, string password) => Users.Add(new Account(age, name, email, password));

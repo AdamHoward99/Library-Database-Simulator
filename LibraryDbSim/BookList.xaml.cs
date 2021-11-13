@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySqlConnector;
 
 namespace LibraryDbSim
 {
@@ -26,7 +27,7 @@ namespace LibraryDbSim
         {
             lSystem = lb;
             InitializeComponent();
-            
+
             //Function to list all available books (stock > 0)
             var availableBooks = from b in lSystem.GetBookCollection() where b.Stock > 0 select b;
             dataGrid.ItemsSource = availableBooks;
