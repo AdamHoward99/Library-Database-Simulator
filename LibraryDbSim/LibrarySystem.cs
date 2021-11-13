@@ -9,6 +9,8 @@ namespace LibraryDbSim
 {
     public class LibrarySystem
     {
+        MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
+
         public LibrarySystem()
         {
             this.Users = new List<Account>();
@@ -25,36 +27,51 @@ namespace LibraryDbSim
 
         public bool AccountValid(string email, string password, out int errorFlag)
         {
-            foreach(Account acc in Users)       //Searches each account stored on the database
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email AND password = @password)", connection);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if(reader.HasRows)     //Account found that matches information, account is valid
             {
-                if (acc.Email == email)         //If an account has the correct email check if the password is also correct
-                {
-                    errorFlag = 1;
-                    if (acc.Password == password)
-                        return true;
-
-                    return false;
-                }
+                errorFlag = 1;
+                connection.Close();
+                return true;
             }
+
             errorFlag = 0;
+            connection.Close();
             return false;
         }
 
         public bool AvailableEmailAddress(string email)
         {
-            MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
             connection.Open();
 
             MySqlCommand selectCmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email)", connection);
             selectCmd.Parameters.AddWithValue("@email", email);
             MySqlDataReader reader = selectCmd.ExecuteReader();
             if (reader.HasRows)
-                return false;
+            {
+                connection.Close();
+                return false;       //Email is already in use
+            }
 
+            connection.Close();
             return true;
         }
 
-        public void AddAccountToSystem(int age, string name, string email, string password) => Users.Add(new Account(age, name, email, password));
+        public void AddAccountToSystem(int age, string name, string email, string password)
+        {
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO accounts (email, password, name, age) VALUES(@email, @password, @name, @age)", connection);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@age", age);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
 
         public bool CheckNewUserPassword(string email, string newPassword) 
         {
