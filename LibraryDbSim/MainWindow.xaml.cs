@@ -34,6 +34,7 @@ namespace LibraryDbSim
             InitializeComponent();
             //Add Accounts, TODO: Get Accounts from database in the future
             lSystem.AddDecoyAccounts();
+
         }
 
         public MainWindow(LibrarySystem lb)     //Constructor used when returning to this window from the account window

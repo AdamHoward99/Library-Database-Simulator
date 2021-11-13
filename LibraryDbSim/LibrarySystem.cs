@@ -75,12 +75,25 @@ namespace LibraryDbSim
 
         public bool CheckNewUserPassword(string email, string newPassword) 
         {
-            Account acc = Users.Find(a => a.Email == email);        //Find user with selected email
-            if (acc.Password == newPassword)        //Check if new password is the same as the current
-                return false;
+            connection.Open();
 
-            acc.ChangePassword(newPassword);        //New password is not same as current, change password of this user
-            return true;
+            //Find user with selected email and make sure password is different
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email AND password != @password)", connection);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", newPassword);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if(reader.HasRows)      //Account email has been found with a different password, reset the password
+            {
+                //Change the password
+                reader.Close();
+                cmd.CommandText = "UPDATE accounts SET password = @password WHERE email = @email";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+
+            connection.Close();
+            return false;
         }
 
         public Account GetAccount(string email) => Users.Find(acc => acc.Email == email);       //Finds an account for account window based on email field
