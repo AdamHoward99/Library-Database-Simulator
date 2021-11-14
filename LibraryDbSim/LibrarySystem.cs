@@ -9,20 +9,12 @@ namespace LibraryDbSim
 {
     public class LibrarySystem
     {
-        MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
+        public MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
 
         public LibrarySystem()
         {
             this.Users = new List<Account>();
             CreateBookCollection();
-        }
-
-        public void AddDecoyAccounts()      //TODO: To be replaced by database eventually
-        {
-            Users.Add(new Account(22, "Adam", "example@gmail.com", "password"));
-            Users[0].AddBookToList(BookCollection[0]);      //In future, would be stored on a db
-
-            Users.Add(new Account(50, "Jon", "jon@gmail.com", "jon"));
         }
 
         public bool AccountValid(string email, string password, out int errorFlag)

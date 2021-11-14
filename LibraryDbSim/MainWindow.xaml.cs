@@ -32,9 +32,6 @@ namespace LibraryDbSim
         public MainWindow()     //Initial Constructor used for initial startup of application
         {
             InitializeComponent();
-            //Add Accounts, TODO: Get Accounts from database in the future
-            lSystem.AddDecoyAccounts();
-
         }
 
         public MainWindow(LibrarySystem lb)     //Constructor used when returning to this window from the account window

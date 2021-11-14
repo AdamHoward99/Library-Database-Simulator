@@ -43,5 +43,7 @@ namespace LibraryDbSim
         private int Age { get; set; }
         List<Book> CurrentRentedBooks;
         List<Book> PreviousRentedBooks;
+
+        public int AccountID { get; set; }
     }
 }

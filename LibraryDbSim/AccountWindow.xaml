@@ -44,7 +44,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Header="Title"
-                    Binding="{Binding Name}"
+                    Binding="{Binding bookName}"
                     CanUserResize="False"
                     CanUserReorder="False"
                     CanUserSort="False">
@@ -52,7 +52,7 @@
 
                 <DataGridTextColumn
                     Header="Rented On"
-                    Binding="{Binding RentDate, StringFormat=\{0:d/M/yyyy\}}"
+                    Binding="{Binding rentDate, StringFormat=\{0:d/M/yyyy\}}"
                     CanUserResize="False"
                     CanUserReorder="False"
                     CanUserSort="False">
@@ -60,7 +60,7 @@
 
                 <DataGridTextColumn
                     Header="Return By"
-                    Binding="{Binding ReturnDate, StringFormat=\{0:d/M/yyyy\}}"
+                    Binding="{Binding returnDate, StringFormat=\{0:d/M/yyyy\}}"
                     CanUserResize="False"
                     CanUserReorder="False"
                     CanUserSort="False">

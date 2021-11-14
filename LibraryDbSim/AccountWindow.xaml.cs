@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySqlConnector;
 
 namespace LibraryDbSim
 {
@@ -20,7 +22,7 @@ namespace LibraryDbSim
     public partial class AccountWindow : Window
     {
         LibrarySystem lSystem;
-        Account thisAccount;        //Easier method of obtaining data from specific account
+        Account thisAccount = new Account();        //Easier method of obtaining data from specific account
         public static bool IsAdditionalWindowOpen = false;
 
         public AccountWindow(LibrarySystem lb, string accountEmail)
@@ -28,13 +30,24 @@ namespace LibraryDbSim
             InitializeComponent();
             lSystem = lb;
 
-            thisAccount = lb.GetAccount(accountEmail);      //Gets the account
+            //Get name of user from database
+            lSystem.connection.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT name FROM accounts where (email = @email)", lSystem.connection);
+            cmd.Parameters.AddWithValue("@email", accountEmail);
+            AccNameLbl.Content = $"Welcome {Convert.ToString(cmd.ExecuteScalar())}";
 
-            //Output Account name
-            AccNameLbl.Content = $"Welcome {thisAccount.Name}";
+            //Outputting current rented books by this user
+            //Get ID of this account
+            cmd.CommandText = "SELECT accID FROM accounts where email = @email";
+            thisAccount.AccountID = Convert.ToInt16(cmd.ExecuteScalar());
 
-            //Output all rented books by this user
-            RentedBooksData.ItemsSource = thisAccount.GetCurrentRentedBooks();
+            //Get all book orders which contain this account id
+            cmd.CommandText = "SELECT * FROM rentedbookorders where accID = @accID";
+            cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+            DataTable ds = new DataTable();
+            ds.Load(cmd.ExecuteReader());
+            RentedBooksData.ItemsSource = ds.DefaultView;
+            lSystem.connection.Close();
         }
 
         private void UpdateErrorLabel(string txt)
