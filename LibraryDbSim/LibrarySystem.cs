@@ -14,7 +14,6 @@ namespace LibraryDbSim
         public LibrarySystem()
         {
             this.Users = new List<Account>();
-            CreateBookCollection();
         }
 
         public bool AccountValid(string email, string password, out int errorFlag)
@@ -91,20 +90,6 @@ namespace LibraryDbSim
         public Account GetAccount(string email) => Users.Find(acc => acc.Email == email);       //Finds an account for account window based on email field
 
         public List<Book> GetBookCollection() => BookCollection;        //TODO: Find way around this, move book collection into its own class?
-
-        private void CreateBookCollection()     //TODO: To be replaced by database eventually
-        {
-            //BookCollection.Add(new Book("Of Mice and Men", "John Steinbeck", 4, BookCategories.Fiction));
-            //BookCollection.Add(new Book("To Kill a Mockingbird", "Harper Lee", 1, BookCategories.Fiction));
-            //BookCollection.Add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 4, BookCategories.Fiction));
-            //BookCollection.Add(new Book("The Invisible Man", "H. G. Wells", 1, BookCategories.Horror));
-            //BookCollection.Add(new Book("Beloved", "Toni Morrison", 3, BookCategories.Fiction));
-            //BookCollection.Add(new Book("The Hobbit", "J. R. R. Tolkien", 3, BookCategories.Fantasy));
-            //BookCollection.Add(new Book("Harry Potter and the Philosopher's Stone", "J. K. Rowling", 5, BookCategories.Fantasy));
-            //BookCollection.Add(new Book("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 6, BookCategories.Fiction));
-            //BookCollection.Add(new Book("Harry Potter and the Chamber of Secrets", "J. K. Rowling", 2, BookCategories.Fiction));
-            //BookCollection.Add(new Book("Watership Down", "Richard Adams", 4, BookCategories.Fantasy));
-        }
 
         public void ReturnBook(Book book) => BookCollection.Find(b => b == book).Stock++;
 

@@ -161,15 +161,13 @@ namespace LibraryDbSim
         private void ExtendBookDuration(object sender, RoutedEventArgs e)
         {
             //Check if a book is selected
-            if (RentedBooksData.SelectedItem == null)
+            if (RentedBooksData.SelectedIndex < 0)
                 return;
 
-            //Open new window to extend date, similar to selectRentTime Window
-            ExtendDuration extendDuration = new ExtendDuration(thisAccount.GetCurrentRentedBooks()[RentedBooksData.SelectedIndex]);
+            //Get selected rows information and pass to duration window
+            DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
+            ExtendDuration extendDuration = new ExtendDuration(selectedRow, lSystem);
             extendDuration.ShowDialog();
-
-            //Obtain new date for book from extend duration window
-            RentedBooksData.Items.Refresh();
         }
     }
 }
