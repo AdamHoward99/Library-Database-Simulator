@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 using MySqlConnector;
 
 namespace LibraryDbSim
@@ -22,25 +23,30 @@ namespace LibraryDbSim
     {
         LibrarySystem lSystem;      //Is Passed from account window, only requires book collection list so if that moves, remove this TODO
         public static Book chosenBook;      //Book chosen to rent, is used by AccountWindow to add book to account rented books list
+        DataTable bookListData = new DataTable();       //Stores available books from bookcollection table on database
 
         public BookList(LibrarySystem lb)
         {
             lSystem = lb;
             InitializeComponent();
 
-            //Function to list all available books (stock > 0)
-            var availableBooks = from b in lSystem.GetBookCollection() where b.Stock > 0 select b;
-            dataGrid.ItemsSource = availableBooks;
-
-
-            //Search bar in future?
+            //Get All available books on system (stock > 0) from database
+            lSystem.connection.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM bookcollection where (bookStock > 0)", lSystem.connection);
+            bookListData.Load(cmd.ExecuteReader());
+            dataGrid.ItemsSource = bookListData.DefaultView;
+            lSystem.connection.Close();
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             //An item from the datagrid is selected
             if(dataGrid.SelectedIndex != -1)
-                chosenBook = dataGrid.Items[dataGrid.SelectedIndex] as Book;        //Stores book chosen to be added to account in accountwindow
+            {
+                //Get selected book information from datatable and store in chosenBook variable
+                DataRow selectedRow = bookListData.Rows[dataGrid.SelectedIndex];
+                chosenBook = new Book(Convert.ToInt16(selectedRow["bookID"]), selectedRow["bookName"].ToString(), selectedRow["bookAuthor"].ToString(), Convert.ToInt16(selectedRow["bookStock"]));
+            }
 
             this.Close();
         }

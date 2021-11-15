@@ -94,16 +94,16 @@ namespace LibraryDbSim
 
         private void CreateBookCollection()     //TODO: To be replaced by database eventually
         {
-            BookCollection.Add(new Book("Of Mice and Men", "John Steinbeck", 4, new DateTime(1937, 11, 23), BookCategories.Fiction));
-            BookCollection.Add(new Book("To Kill a Mockingbird", "Harper Lee", 1, new DateTime(1960, 7, 11), BookCategories.Fiction));
-            BookCollection.Add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 4, new DateTime(1925, 4, 10), BookCategories.Fiction));
-            BookCollection.Add(new Book("The Invisible Man", "H. G. Wells", 1, new DateTime(1897, 1, 1), BookCategories.Horror));
-            BookCollection.Add(new Book("Beloved", "Toni Morrison", 3, new DateTime(1987, 9, 1), BookCategories.Fiction));
-            BookCollection.Add(new Book("The Hobbit", "J. R. R. Tolkien", 3, new DateTime(1937, 1, 1), BookCategories.Fantasy));
-            BookCollection.Add(new Book("Harry Potter and the Philosopher's Stone", "J. K. Rowling", 5, new DateTime(1997, 6, 26), BookCategories.Fantasy));
-            BookCollection.Add(new Book("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 6, new DateTime(1950, 10, 16), BookCategories.Fiction));
-            BookCollection.Add(new Book("Harry Potter and the Chamber of Secrets", "J. K. Rowling", 2, new DateTime(1998, 6, 2), BookCategories.Fiction));
-            BookCollection.Add(new Book("Watership Down", "Richard Adams", 4, new DateTime(1972, 11, 1), BookCategories.Fantasy));
+            //BookCollection.Add(new Book("Of Mice and Men", "John Steinbeck", 4, BookCategories.Fiction));
+            //BookCollection.Add(new Book("To Kill a Mockingbird", "Harper Lee", 1, BookCategories.Fiction));
+            //BookCollection.Add(new Book("The Great Gatsby", "F. Scott Fitzgerald", 4, BookCategories.Fiction));
+            //BookCollection.Add(new Book("The Invisible Man", "H. G. Wells", 1, BookCategories.Horror));
+            //BookCollection.Add(new Book("Beloved", "Toni Morrison", 3, BookCategories.Fiction));
+            //BookCollection.Add(new Book("The Hobbit", "J. R. R. Tolkien", 3, BookCategories.Fantasy));
+            //BookCollection.Add(new Book("Harry Potter and the Philosopher's Stone", "J. K. Rowling", 5, BookCategories.Fantasy));
+            //BookCollection.Add(new Book("The Lion, the Witch and the Wardrobe", "C. S. Lewis", 6, BookCategories.Fiction));
+            //BookCollection.Add(new Book("Harry Potter and the Chamber of Secrets", "J. K. Rowling", 2, BookCategories.Fiction));
+            //BookCollection.Add(new Book("Watership Down", "Richard Adams", 4, BookCategories.Fantasy));
         }
 
         public void ReturnBook(Book book) => BookCollection.Find(b => b == book).Stock++;

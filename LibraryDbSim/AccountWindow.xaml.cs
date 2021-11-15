@@ -24,6 +24,7 @@ namespace LibraryDbSim
         LibrarySystem lSystem;
         Account thisAccount = new Account();        //Easier method of obtaining data from specific account
         public static bool IsAdditionalWindowOpen = false;
+        private DataTable accountBookOrders = new DataTable();      //Stores book orders of current account locally from database
 
         public AccountWindow(LibrarySystem lb, string accountEmail)
         {
@@ -44,9 +45,8 @@ namespace LibraryDbSim
             //Get all book orders which contain this account id
             cmd.CommandText = "SELECT * FROM rentedbookorders where accID = @accID";
             cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
-            DataTable ds = new DataTable();
-            ds.Load(cmd.ExecuteReader());
-            RentedBooksData.ItemsSource = ds.DefaultView;
+            accountBookOrders.Load(cmd.ExecuteReader());
+            RentedBooksData.ItemsSource = accountBookOrders.DefaultView;
             lSystem.connection.Close();
         }
 
@@ -70,27 +70,54 @@ namespace LibraryDbSim
             SelectRentTime selectRentTime = new SelectRentTime();
             selectRentTime.ShowDialog();
 
-            if(BookList.chosenBook != null)     //A book was chosen in the book list window
+            if (BookList.chosenBook != null)     //A book was chosen in the book list window
             {
-                //Check if book is already rented by this used, TODO: in future pass account to book list to check this there
-                if(thisAccount.GetCurrentRentedBooks().Find(b => b == BookList.chosenBook) == null)
+                //Check if book is already rented by this used
+                lSystem.connection.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT orderID FROM rentedbookorders where (accID = @accID AND bookName = @bookName)", lSystem.connection);
+                cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+                cmd.Parameters.AddWithValue("@bookName", BookList.chosenBook.Name);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)      //Account currently is renting this book, cancel order
                 {
-                    //Reset Error Label
-                    ErrorLbl3.Visibility = Visibility.Hidden;
-
-                    //Set Rented Date to today
-                    BookList.chosenBook.RentDate = DateTime.Now;
-
-                    //Add book to account
-                    BookList.chosenBook.Stock--;
-                    thisAccount.AddBookToList(BookList.chosenBook);
-                    RentedBooksData.Items.Refresh();
+                    BookList.chosenBook = null;
+                    lSystem.connection.Close();
+                    return;
                 }
 
-                BookList.chosenBook = null;
-            }
+                //Account is not already renting the book
+                ErrorLbl3.Visibility = Visibility.Hidden;       //Reset error label
 
-            return;
+                //Set rent date to today
+                BookList.chosenBook.RentDate = DateTime.Now;
+                reader.Close();
+
+                //Add book order to rentedbookorders table on database
+                cmd.CommandText = "INSERT INTO rentedbookorders (accID, bookName, rentDate, returnDate) VALUES(@accID, @bookName, @rentDate, @returnDate)";
+                cmd.Parameters.AddWithValue("@rentDate", BookList.chosenBook.RentDate);
+                cmd.Parameters.AddWithValue("@returnDate", BookList.chosenBook.ReturnDate);
+                cmd.ExecuteNonQuery();
+
+                //Take one away from available stock in bookcollection table
+                BookList.chosenBook.Stock--;
+                if (BookList.chosenBook.Stock < 0) BookList.chosenBook.Stock = 0;       //Move into get, setter area
+
+                cmd.CommandText = "UPDATE bookcollection SET bookStock = @bookStock WHERE bookName = @bookName";
+                cmd.Parameters.AddWithValue("@bookStock", BookList.chosenBook.Stock);
+                cmd.ExecuteNonQuery();
+
+                //Update datatable to reflect new book
+                //Add new row for new order
+                DataRow newOrderRow = accountBookOrders.NewRow();
+                newOrderRow["accID"] = thisAccount.AccountID;
+                newOrderRow["bookName"] = BookList.chosenBook.Name;
+                newOrderRow["rentDate"] = BookList.chosenBook.RentDate;
+                newOrderRow["returnDate"] = BookList.chosenBook.ReturnDate;
+                accountBookOrders.Rows.Add(newOrderRow);
+
+                BookList.chosenBook = null;     //Reset local copy
+                lSystem.connection.Close();
+            }
         }
 
         private void Logout(object sender, RoutedEventArgs e)

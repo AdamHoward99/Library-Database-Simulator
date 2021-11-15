@@ -32,35 +32,28 @@
             <DataGrid.Columns>
                 <DataGridTextColumn 
                     Header="Title" 
-                    Binding="{Binding Name}" 
+                    Binding="{Binding bookName}" 
                     CanUserResize="False" 
                     CanUserReorder="False">
                 </DataGridTextColumn>
 
                 <DataGridTextColumn
                     Header="Author" 
-                    Binding="{Binding Author}"
+                    Binding="{Binding bookAuthor}"
                     CanUserResize="False"
                     CanUserReorder="False">
                 </DataGridTextColumn>
 
                 <DataGridTextColumn 
                     Header="Stock" 
-                    Binding="{Binding Stock}"
-                    CanUserResize="False"
-                    CanUserReorder="False">
-                </DataGridTextColumn>
-
-                <DataGridTextColumn 
-                    Header="Publish Date"
-                    Binding="{Binding PublishDate.Date, StringFormat=\{0:d/M/yyyy\}}"
+                    Binding="{Binding bookStock}"
                     CanUserResize="False"
                     CanUserReorder="False">
                 </DataGridTextColumn>
 
                 <DataGridTextColumn
                     Header="Genre"
-                    Binding="{Binding Category}"
+                    Binding="{Binding bookCategory}"
                     CanUserResize="False"
                     CanUserReorder="False">
                 </DataGridTextColumn>

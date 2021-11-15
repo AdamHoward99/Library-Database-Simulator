@@ -11,18 +11,17 @@ namespace LibraryDbSim
     public class Book
     {
         public Book() { }
-        public Book(string n, string a, int s, DateTime pd, BookCategories category)
+        public Book(int id, string n, string a, int s)
         {
+            this.bookID = id;
             this.Name = n;
             this.Author = a;
             this.Stock = s;
-            this.PublishDate = pd;
-            this.Category = category;
         }
 
         //Variables
+        public int bookID { get; set; }
         public string Name { get; private set; }
-        public DateTime PublishDate { get; private set; }
         public int Stock { get; set; }
         public string Author { get; private set; }
         public BookCategories Category { get; private set; }
