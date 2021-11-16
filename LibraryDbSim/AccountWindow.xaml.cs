@@ -132,20 +132,27 @@ namespace LibraryDbSim
 
         private void ReturnBook(object sender, RoutedEventArgs e)
         {
-            int removeBookPos = RentedBooksData.SelectedIndex;
-
-            //Make sure an item is selected
-            if (removeBookPos == -1)
+            //Check if a book is selected
+            if (RentedBooksData.SelectedIndex < 0)
                 return;
 
-            //Add to stock of book
-            lSystem.ReturnBook(RentedBooksData.Items[RentedBooksData.SelectedIndex] as Book);
+            //Get selected rows information and pass to duration window
+            DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
 
-            //Remove book from accounts rented book list
-            thisAccount.RemoveBookFromList(removeBookPos);
+            //Add to the stock of the book
+            lSystem.connection.Open();
+            MySqlCommand cmd = new MySqlCommand("UPDATE bookcollection SET bookStock = bookStock + 1 WHERE bookName = @bookName",lSystem.connection);
+            cmd.Parameters.AddWithValue("@bookName", selectedRow["bookName"]);
+            cmd.ExecuteNonQuery();
 
-            //Confirm window yes/no?, deadlines for books?
-            RentedBooksData.Items.Refresh();
+            //Remove order from rentedbookorders table on db
+            cmd.CommandText = "DELETE from rentedbookorders WHERE bookName = @bookName AND accID = @accID";
+            cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+            cmd.ExecuteNonQuery();
+            lSystem.connection.Close();
+
+            //Update UI
+            accountBookOrders.Rows.Remove(selectedRow);
         }
 
         private void ChangeAccountSettings(object sender, RoutedEventArgs e)
