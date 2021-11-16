@@ -9,92 +9,83 @@ namespace LibraryDbSim
 {
     public class LibrarySystem
     {
-        public MySqlConnection connection = new MySqlConnection("Server = 127.0.0.1; Database = librarydatabase; Uid =; Pwd =;");
-
-        public LibrarySystem()
-        {
-            this.Users = new List<Account>();
-        }
-
         public bool AccountValid(string email, string password, out int errorFlag)
         {
-            connection.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email AND password = @password)", connection);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", password);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if(reader.HasRows)     //Account found that matches information, account is valid
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email AND password = @password)";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);
+            DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
+            if(DatabaseConnection.reader.HasRows)     //Account found that matches information, account is valid
             {
                 errorFlag = 1;
-                connection.Close();
+                DatabaseConnection.cmd.Parameters.Clear();
+                DatabaseConnection.CloseAll();
                 return true;
             }
 
             errorFlag = 0;
-            connection.Close();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.CloseAll();
             return false;
         }
 
         public bool AvailableEmailAddress(string email)
         {
-            connection.Open();
+            DatabaseConnection.conn.Open();
 
-            MySqlCommand selectCmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email)", connection);
-            selectCmd.Parameters.AddWithValue("@email", email);
-            MySqlDataReader reader = selectCmd.ExecuteReader();
-            if (reader.HasRows)
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email)";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
+            DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
+
+            if (DatabaseConnection.reader.HasRows)
             {
-                connection.Close();
+                DatabaseConnection.cmd.Parameters.Clear();
+                DatabaseConnection.CloseAll();
                 return false;       //Email is already in use
             }
 
-            connection.Close();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.CloseAll();
             return true;
         }
 
         public void AddAccountToSystem(int age, string name, string email, string password)
         {
-            connection.Open();
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO accounts (email, password, name, age) VALUES(@email, @password, @name, @age)", connection);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", password);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@age", age);
-            cmd.ExecuteNonQuery();
-            connection.Close();
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "INSERT INTO accounts (email, password, name, age) VALUES(@email, @password, @name, @age)";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@name", name);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@age", age);
+            DatabaseConnection.cmd.ExecuteNonQuery();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.conn.Close();
         }
 
         public bool CheckNewUserPassword(string email, string newPassword) 
         {
-            connection.Open();
+            DatabaseConnection.conn.Open();
 
             //Find user with selected email and make sure password is different
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts WHERE (email = @email AND password != @password)", connection);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", newPassword);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if(reader.HasRows)      //Account email has been found with a different password, reset the password
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email AND password != @password)";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@password", newPassword);
+            DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
+            if(DatabaseConnection.reader.HasRows)      //Account email has been found with a different password, reset the password
             {
                 //Change the password
-                reader.Close();
-                cmd.CommandText = "UPDATE accounts SET password = @password WHERE email = @email";
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                DatabaseConnection.reader.Close();
+                DatabaseConnection.cmd.CommandText = "UPDATE accounts SET password = @password WHERE email = @email";
+                DatabaseConnection.cmd.ExecuteNonQuery();
+                DatabaseConnection.cmd.Parameters.Clear();
+                DatabaseConnection.conn.Close();
                 return true;
             }
 
-            connection.Close();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.CloseAll();
             return false;
         }
-
-        public Account GetAccount(string email) => Users.Find(acc => acc.Email == email);       //Finds an account for account window based on email field
-
-        public List<Book> GetBookCollection() => BookCollection;        //TODO: Find way around this, move book collection into its own class?
-
-        public void ReturnBook(Book book) => BookCollection.Find(b => b == book).Stock++;
-
-        private List<Account> Users;
-        private List<Book> BookCollection = new List<Book>();      //Could move to another class?
-        private Random random = new Random();      //Used for simulating book renting (gets random book from collection)
     }
 }

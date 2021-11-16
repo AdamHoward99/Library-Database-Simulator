@@ -16,26 +16,21 @@ using MySqlConnector;
 
 namespace LibraryDbSim
 {
-    /// <summary>
-    /// Interaction logic for BookList.xaml
-    /// </summary>
     public partial class BookList : Window
     {
-        LibrarySystem lSystem;      //Is Passed from account window, only requires book collection list so if that moves, remove this TODO
         public static Book chosenBook;      //Book chosen to rent, is used by AccountWindow to add book to account rented books list
         DataTable bookListData = new DataTable();       //Stores available books from bookcollection table on database
 
-        public BookList(LibrarySystem lb)
+        public BookList()
         {
-            lSystem = lb;
             InitializeComponent();
 
             //Get All available books on system (stock > 0) from database
-            lSystem.connection.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM bookcollection where (bookStock > 0)", lSystem.connection);
-            bookListData.Load(cmd.ExecuteReader());
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM bookcollection where (bookStock > 0)";
+            bookListData.Load(DatabaseConnection.cmd.ExecuteReader());
             dataGrid.ItemsSource = bookListData.DefaultView;
-            lSystem.connection.Close();
+            DatabaseConnection.conn.Close();
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)

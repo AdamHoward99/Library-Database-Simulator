@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace LibraryDbSim
 {
-    /// <summary>
-    /// Interaction logic for SelectRentTime.xaml
-    /// </summary>
     public partial class SelectRentTime : Window
     {
         public SelectRentTime()

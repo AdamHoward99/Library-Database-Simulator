@@ -19,14 +19,12 @@ namespace LibraryDbSim
     public partial class ExtendDuration : Window
     {
         DataRow selectedItemRow;     //Used to find orderID on the database
-        LibrarySystem lsystem;      //Only passed to use the mysql connection, TODO: change this in future
 
-        public ExtendDuration(DataRow row, LibrarySystem ls)
+        public ExtendDuration(DataRow row)
         {
             InitializeComponent();
 
             selectedItemRow = row;
-            lsystem = ls;
 
             //Blackout dates on the date picker which are in the past or beyond 2 weeks from today
             ExtendDatePicker.DisplayDateStart = DateTime.Now;
@@ -41,12 +39,13 @@ namespace LibraryDbSim
                 return;
 
             //Update book order with new date in rentedbookorder table on db
-            lsystem.connection.Open();
-            MySqlCommand cmd = new MySqlCommand("UPDATE rentedbookorders SET returnDate = @returnDate WHERE orderID = @orderID", lsystem.connection);
-            cmd.Parameters.AddWithValue("@returnDate", ExtendDatePicker.SelectedDate.Value);
-            cmd.Parameters.AddWithValue("@orderID", selectedItemRow["orderID"]);
-            cmd.ExecuteNonQuery();
-            lsystem.connection.Close();
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "UPDATE rentedbookorders SET returnDate = @returnDate WHERE orderID = @orderID";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@returnDate", ExtendDatePicker.SelectedDate.Value);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@orderID", selectedItemRow["orderID"]);
+            DatabaseConnection.cmd.ExecuteNonQuery();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.conn.Close();
 
             //Update UI of app
             selectedItemRow["returnDate"] = ExtendDatePicker.SelectedDate.Value;

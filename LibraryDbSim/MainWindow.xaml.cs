@@ -18,9 +18,6 @@ using MySqlConnector;
 
 namespace LibraryDbSim
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         //Create Library System

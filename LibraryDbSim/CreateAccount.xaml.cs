@@ -15,9 +15,6 @@ using System.Text.RegularExpressions;
 
 namespace LibraryDbSim
 {
-    /// <summary>
-    /// Interaction logic for CreateAccount.xaml
-    /// </summary>
     public partial class CreateAccount : Window
     {
         LibrarySystem lSystem;

@@ -18,8 +18,8 @@ namespace LibraryDbSim
 {
     public partial class AccountWindow : Window
     {
-        LibrarySystem lSystem;
-        Account thisAccount = new Account();        //Easier method of obtaining data from specific account
+        LibrarySystem lSystem;     
+        Account thisAccount;        //Easier method of obtaining data from specific account
         public static bool IsAdditionalWindowOpen = false;
         private DataTable accountBookOrders = new DataTable();      //Stores book orders of current account locally from database
 
@@ -28,23 +28,32 @@ namespace LibraryDbSim
             InitializeComponent();
             lSystem = lb;
 
-            //Get name of user from database
-            lSystem.connection.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT name FROM accounts where (email = @email)", lSystem.connection);
-            cmd.Parameters.AddWithValue("@email", accountEmail);
-            AccNameLbl.Content = $"Welcome {Convert.ToString(cmd.ExecuteScalar())}";
+            //Get name of user and accID from database
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "SELECT accId, name FROM accounts WHERE email = @email";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", accountEmail);
+            DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
 
-            //Outputting current rented books by this user
-            //Get ID of this account
-            cmd.CommandText = "SELECT accID FROM accounts where email = @email";
-            thisAccount.AccountID = Convert.ToInt16(cmd.ExecuteScalar());
+            if(DatabaseConnection.reader.HasRows)       //Ensure data was obtained from the SELECT command
+            {
+                DatabaseConnection.reader.Read();
+
+                //Locally store information for future use
+                thisAccount = new Account(Convert.ToInt16(DatabaseConnection.reader.GetValue(0)), DatabaseConnection.reader.GetValue(1).ToString());
+            }
+
+            DatabaseConnection.reader.Close();
+
+            //Set Name of the current account user on the label
+            AccNameLbl.Content = $"Welcome {thisAccount.Name}";
 
             //Get all book orders which contain this account id
-            cmd.CommandText = "SELECT * FROM rentedbookorders where accID = @accID";
-            cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
-            accountBookOrders.Load(cmd.ExecuteReader());
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM rentedbookorders where accID = @accID";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+            accountBookOrders.Load(DatabaseConnection.cmd.ExecuteReader());
             RentedBooksData.ItemsSource = accountBookOrders.DefaultView;
-            lSystem.connection.Close();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.conn.Close();
         }
 
         private void UpdateErrorLabel(string txt)
@@ -56,7 +65,7 @@ namespace LibraryDbSim
         private void RentABook(object sender, RoutedEventArgs e)
         {
             //Goto rent book window
-            BookList bl = new BookList(lSystem);
+            BookList bl = new BookList();
             bl.ShowDialog();
 
             //Ensure a book was chosen before opening next window
@@ -70,15 +79,16 @@ namespace LibraryDbSim
             if (BookList.chosenBook != null)     //A book was chosen in the book list window
             {
                 //Check if book is already rented by this used
-                lSystem.connection.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT orderID FROM rentedbookorders where (accID = @accID AND bookName = @bookName)", lSystem.connection);
-                cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
-                cmd.Parameters.AddWithValue("@bookName", BookList.chosenBook.Name);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)      //Account currently is renting this book, cancel order
+                DatabaseConnection.conn.Open();
+                DatabaseConnection.cmd.CommandText = "SELECT orderID FROM rentedbookorders where (accID = @accID AND bookName = @bookName)";
+                DatabaseConnection.cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+                DatabaseConnection.cmd.Parameters.AddWithValue("@bookName", BookList.chosenBook.Name);
+                DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
+
+                if (DatabaseConnection.reader.HasRows)      //Account currently is renting this book, cancel order
                 {
                     BookList.chosenBook = null;
-                    lSystem.connection.Close();
+                    DatabaseConnection.CloseAll();
                     return;
                 }
 
@@ -87,21 +97,21 @@ namespace LibraryDbSim
 
                 //Set rent date to today
                 BookList.chosenBook.RentDate = DateTime.Now;
-                reader.Close();
+                DatabaseConnection.reader.Close();
 
                 //Add book order to rentedbookorders table on database
-                cmd.CommandText = "INSERT INTO rentedbookorders (accID, bookName, rentDate, returnDate) VALUES(@accID, @bookName, @rentDate, @returnDate)";
-                cmd.Parameters.AddWithValue("@rentDate", BookList.chosenBook.RentDate);
-                cmd.Parameters.AddWithValue("@returnDate", BookList.chosenBook.ReturnDate);
-                cmd.ExecuteNonQuery();
+                DatabaseConnection.cmd.CommandText = "INSERT INTO rentedbookorders (accID, bookName, rentDate, returnDate) VALUES(@accID, @bookName, @rentDate, @returnDate)";
+                DatabaseConnection.cmd.Parameters.AddWithValue("@rentDate", BookList.chosenBook.RentDate);
+                DatabaseConnection.cmd.Parameters.AddWithValue("@returnDate", BookList.chosenBook.ReturnDate);
+                DatabaseConnection.cmd.ExecuteNonQuery();
 
                 //Take one away from available stock in bookcollection table
                 BookList.chosenBook.Stock--;
                 if (BookList.chosenBook.Stock < 0) BookList.chosenBook.Stock = 0;       //Move into get, setter area
 
-                cmd.CommandText = "UPDATE bookcollection SET bookStock = @bookStock WHERE bookName = @bookName";
-                cmd.Parameters.AddWithValue("@bookStock", BookList.chosenBook.Stock);
-                cmd.ExecuteNonQuery();
+                DatabaseConnection.cmd.CommandText = "UPDATE bookcollection SET bookStock = @bookStock WHERE bookName = @bookName";
+                DatabaseConnection.cmd.Parameters.AddWithValue("@bookStock", BookList.chosenBook.Stock);
+                DatabaseConnection.cmd.ExecuteNonQuery();
 
                 //Update datatable to reflect new book
                 //Add new row for new order
@@ -113,7 +123,8 @@ namespace LibraryDbSim
                 accountBookOrders.Rows.Add(newOrderRow);
 
                 BookList.chosenBook = null;     //Reset local copy
-                lSystem.connection.Close();
+                DatabaseConnection.cmd.Parameters.Clear();
+                DatabaseConnection.conn.Close();
             }
         }
 
@@ -137,16 +148,17 @@ namespace LibraryDbSim
             DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
 
             //Add to the stock of the book
-            lSystem.connection.Open();
-            MySqlCommand cmd = new MySqlCommand("UPDATE bookcollection SET bookStock = bookStock + 1 WHERE bookName = @bookName",lSystem.connection);
-            cmd.Parameters.AddWithValue("@bookName", selectedRow["bookName"]);
-            cmd.ExecuteNonQuery();
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "UPDATE bookcollection SET bookStock = bookStock + 1 WHERE bookName = @bookName";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@bookName", selectedRow["bookName"]);
+            DatabaseConnection.cmd.ExecuteNonQuery();
 
             //Remove order from rentedbookorders table on db
-            cmd.CommandText = "DELETE from rentedbookorders WHERE bookName = @bookName AND accID = @accID";
-            cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
-            cmd.ExecuteNonQuery();
-            lSystem.connection.Close();
+            DatabaseConnection.cmd.CommandText = "DELETE from rentedbookorders WHERE bookName = @bookName AND accID = @accID";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
+            DatabaseConnection.cmd.ExecuteNonQuery();
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.conn.Close();
 
             //Update UI
             accountBookOrders.Rows.Remove(selectedRow);
@@ -170,7 +182,7 @@ namespace LibraryDbSim
 
             //Get selected rows information and pass to duration window
             DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
-            ExtendDuration extendDuration = new ExtendDuration(selectedRow, lSystem);
+            ExtendDuration extendDuration = new ExtendDuration(selectedRow);
             extendDuration.ShowDialog();
         }
     }
