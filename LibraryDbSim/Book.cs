@@ -17,7 +17,6 @@ namespace LibraryDbSim
         public string Name { get; private set; }
         public int Stock { get; set; }
         public string Author { get; private set; }
-
         public DateTime RentDate { get; set; }
         public DateTime ReturnDate { get; set; }
     }

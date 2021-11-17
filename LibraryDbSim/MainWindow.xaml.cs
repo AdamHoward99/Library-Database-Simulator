@@ -1,28 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Theming;
-using MySqlConnector;
 
 namespace LibraryDbSim
 {
     public partial class MainWindow : Window
     {
-        //Create Library System
-        LibrarySystem lSystem = new LibrarySystem();        //TODO: Store this data on a db, until then pass this class to all windows
-
         //Variable to prevent multiple other windows opening, max amount of windows is this + 1
         public static bool IsAdditionalWindowOpen = false;
 
@@ -31,16 +13,8 @@ namespace LibraryDbSim
             InitializeComponent();
         }
 
-        public MainWindow(LibrarySystem lb)     //Constructor used when returning to this window from the account window
-        {
-            InitializeComponent();
-            lSystem = lb;           //Saves any changes made
-        }
-
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: In future check email with database instead of stored credentials
-
             //Ensure username/password textboxes are not empty before validating
             if(string.IsNullOrWhiteSpace(UsernameTxtBox.Text) && string.IsNullOrWhiteSpace(PasswordTxtBox.Password))
             {
@@ -49,9 +23,9 @@ namespace LibraryDbSim
             }
 
             //Validate Account details
-            if (lSystem.AccountValid(UsernameTxtBox.Text, PasswordTxtBox.Password, out int error))
+            if (AccountValid(UsernameTxtBox.Text, PasswordTxtBox.Password, out int error))
             {
-                AccountWindow accWind = new AccountWindow(lSystem, UsernameTxtBox.Text);     //Pass data on before closing
+                AccountWindow accWind = new AccountWindow(UsernameTxtBox.Text);     //Pass data on before closing
                 accWind.Show();
                 this.Close();
                 return;
@@ -75,7 +49,7 @@ namespace LibraryDbSim
                 IsAdditionalWindowOpen = true;
 
                 //Open new window for user to sign up
-                CreateAccount createAccWindow = new CreateAccount(lSystem);
+                CreateAccount createAccWindow = new CreateAccount();
                 createAccWindow.ShowDialog();
             }
         }
@@ -85,9 +59,30 @@ namespace LibraryDbSim
             if(!IsAdditionalWindowOpen)
             {
                 IsAdditionalWindowOpen = true;
-                ResetPassword resetPasswordWindow = new ResetPassword(lSystem);
+                ResetPassword resetPasswordWindow = new ResetPassword();
                 resetPasswordWindow.ShowDialog();
             }
+        }
+
+        private bool AccountValid(string email, string password, out int errorFlag)
+        {
+            DatabaseConnection.conn.Open();
+            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email AND password = @password)";
+            DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
+            DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);
+            DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
+            if (DatabaseConnection.reader.HasRows)     //Account found that matches information, account is valid
+            {
+                errorFlag = 1;
+                DatabaseConnection.cmd.Parameters.Clear();
+                DatabaseConnection.CloseAll();
+                return true;
+            }
+
+            errorFlag = 0;
+            DatabaseConnection.cmd.Parameters.Clear();
+            DatabaseConnection.CloseAll();
+            return false;
         }
     }
 }
