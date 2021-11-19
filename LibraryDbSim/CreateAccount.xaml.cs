@@ -69,7 +69,7 @@ namespace LibraryDbSim
             e.CancelCommand();      //Pasted data is not string, ignore
         }
 
-        private void NumberTextBox_Pasting(object sender, DataObjectPastingEventArgs e)     //TODO: Combine above function with this
+        private void NumberTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
         {
             if (e.DataObject.GetDataPresent(typeof(String)))        //Pasted values are of string type, ignore otherwise
             {
