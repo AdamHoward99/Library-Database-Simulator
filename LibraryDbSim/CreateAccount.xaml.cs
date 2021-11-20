@@ -37,7 +37,7 @@ namespace LibraryDbSim
                 //A name and age has been entered, check if email is free to use
                 if(lSystem.AvailableEmailAddress(EmailAccTxtBox.Text))
                 {
-                    lSystem.AddAccountToSystem(Convert.ToInt16(AgeTxtBox.Text), NameTxtBox.Text, EmailAccTxtBox.Text, AccPasswordTxtBox.Password);
+                    lSystem.AddAccountToSystem(Convert.ToInt16(AgeTxtBox.Text), NameTxtBox.Text, EmailAccTxtBox.Text, DatabaseConnection.EncryptTextToCipher(AccPasswordTxtBox.Password));
                     this.Close();
                     return;
                 }

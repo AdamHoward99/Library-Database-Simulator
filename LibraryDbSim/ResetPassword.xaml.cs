@@ -37,7 +37,7 @@ namespace LibraryDbSim
                 return;
             }
 
-            if(!CheckNewUserPassword(EmailResTxtBox.Text, NewPasswordBox.Password))     //Entered password is same as current
+            if(!CheckNewUserPassword(EmailResTxtBox.Text, DatabaseConnection.EncryptTextToCipher(NewPasswordBox.Password)))     //Entered password is same as current
             {
                 UpdateErrorLabel("Password is same as current");
                 return;

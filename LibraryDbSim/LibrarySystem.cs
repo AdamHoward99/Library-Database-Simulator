@@ -6,7 +6,7 @@
         {
             DatabaseConnection.conn.Open();
 
-            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email)";
+            DatabaseConnection.cmd.CommandText = "SELECT accID FROM accounts WHERE (email = @email)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
             DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
 

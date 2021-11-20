@@ -23,7 +23,7 @@ namespace LibraryDbSim
             }
 
             //Validate Account details
-            if (AccountValid(UsernameTxtBox.Text, PasswordTxtBox.Password, out int error))
+            if (AccountValid(UsernameTxtBox.Text, DatabaseConnection.EncryptTextToCipher(PasswordTxtBox.Password), out int error))
             {
                 AccountWindow accWind = new AccountWindow(UsernameTxtBox.Text);     //Pass data on before closing
                 accWind.Show();
@@ -67,7 +67,7 @@ namespace LibraryDbSim
         private bool AccountValid(string email, string password, out int errorFlag)
         {
             DatabaseConnection.conn.Open();
-            DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email AND password = @password)";
+            DatabaseConnection.cmd.CommandText = "SELECT accID FROM accounts WHERE (email = @email AND password = @password)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
             DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);
             DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
