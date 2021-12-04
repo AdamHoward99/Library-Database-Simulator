@@ -25,9 +25,7 @@ C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Numerics.Vectors.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\de\MahApps.Metro.resources.dll
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountWindow.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.g.cs
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccount.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDuration.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPassword.g.cs
@@ -36,9 +34,7 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.cache
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.lref
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.baml
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountWindow.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.baml
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccount.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDuration.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPassword.baml
@@ -50,10 +46,11 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csproj.CoreCom
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csproj.CopyComplete
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.exe
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.pdb
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csprojAssemblyReference.cache
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LoginPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LoginPage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountPage.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountPage.baml

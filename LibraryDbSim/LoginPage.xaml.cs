@@ -35,17 +35,9 @@ namespace LibraryDbSim
             //Validate Account details
             if (AccountValid(UsernameTxtBox.Text, DatabaseConnection.EncryptTextToCipher(PasswordTxtBox.Password), out int error))
             {
-                //TODO: get windowFrame var from MainWindow xaml, can do it using below, or declare a static var to windowFrame?
-                NavigationService.RemoveBackEntry();
-                NavigationService.Navigate(new Uri("TestPage.xaml", UriKind.RelativeOrAbsolute));
-                
-
-                //windowFrame.Content = null;     //Clear the last page to prepare for the next frame page
-                //windowFrame.Navigate(new Uri("TestPage.xaml", UriKind.RelativeOrAbsolute));
-
-                //AccountWindow accWind = new AccountWindow(UsernameTxtBox.Text);     //Pass data on before closing
-                //accWind.Show();
-                //this.Close();       //TODO IF PAGES ARE BETTER THAN WINDOWS?
+                //Login credentials are correct, Login to this account
+                AccountPage pg = new AccountPage(UsernameTxtBox.Text);
+                NavigationService.Navigate(pg, UriKind.RelativeOrAbsolute);
                 return;
             }
 
@@ -63,8 +55,6 @@ namespace LibraryDbSim
         private void SignUpLbl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Uri("CreateAccountPage.xaml", UriKind.RelativeOrAbsolute));
-            //CreateAccount createAccWindow = new CreateAccount();
-            //createAccWindow.ShowDialog();
         }
 
         private void ForgotPassword_MouseDoubleClick(object sender, MouseButtonEventArgs e)
