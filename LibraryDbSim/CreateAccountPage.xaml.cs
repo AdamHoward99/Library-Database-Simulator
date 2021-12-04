@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
 
 namespace LibraryDbSim
 {
-    public partial class CreateAccount : Window
+    public partial class CreateAccountPage : Page
     {
         LibrarySystem lSystem = new LibrarySystem();
 
-        public CreateAccount()
+        public CreateAccountPage()
         {
             InitializeComponent();
         }
@@ -23,7 +21,7 @@ namespace LibraryDbSim
         private readonly Regex LettersOnlyRegex = new Regex("[a-zA-Z]");
 
         private bool IsTextNumberOnly(string txt)
-        {   return NumbersOnlyRegex.IsMatch(txt); }
+        { return NumbersOnlyRegex.IsMatch(txt); }
 
         private bool IsTextLettersOnly(string txt)
         { return LettersOnlyRegex.IsMatch(txt); }
@@ -31,17 +29,16 @@ namespace LibraryDbSim
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
             //Validate entered information
-            if(!string.IsNullOrWhiteSpace(NameTxtBox.Text) && !string.IsNullOrWhiteSpace(AgeTxtBox.Text) && EmailAccTxtBox.Text.Contains('@') && EmailAccTxtBox.Text.Length > 6
+            if (!string.IsNullOrWhiteSpace(NameTxtBox.Text) && !string.IsNullOrWhiteSpace(AgeTxtBox.Text) && EmailAccTxtBox.Text.Contains('@') && EmailAccTxtBox.Text.Length > 6
                 && !string.IsNullOrWhiteSpace(AccPasswordTxtBox.Password))
             {
                 //A name and age has been entered, check if email is free to use
-                if(lSystem.AvailableEmailAddress(EmailAccTxtBox.Text))
+                if (lSystem.AvailableEmailAddress(EmailAccTxtBox.Text))
                 {
                     lSystem.AddAccountToSystem(Convert.ToInt16(AgeTxtBox.Text), NameTxtBox.Text, EmailAccTxtBox.Text, DatabaseConnection.EncryptTextToCipher(AccPasswordTxtBox.Password));
-                    this.Close();
+                    NavigationService.GoBack();
                     return;
                 }
-
 
                 //Email already contained on db
                 UpdateErrorLbl("Email already taken!");
@@ -87,6 +84,12 @@ namespace LibraryDbSim
         {
             ErrorLbl2.Visibility = Visibility.Visible;
             ErrorLbl2.Content = txt;
+        }
+
+        private void ReturnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Returns to the last page loaded in the frame (should always be loginPage.xaml)
+            NavigationService.GoBack();
         }
     }
 }

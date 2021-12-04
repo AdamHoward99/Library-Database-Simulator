@@ -55,3 +55,5 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LoginPage.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LoginPage.baml

@@ -11,11 +11,6 @@ namespace LibraryDbSim
             InitializeComponent();
         }
 
-        private void ResetPasswordWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MainWindow.IsAdditionalWindowOpen = false;
-        }
-
         private void ConfirmPassword_Click(object sender, RoutedEventArgs e)
         {
             //Validate Entered values
