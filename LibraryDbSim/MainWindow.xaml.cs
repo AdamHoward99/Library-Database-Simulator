@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using System.Diagnostics;
+using System;
 
 namespace LibraryDbSim
 {
@@ -25,9 +28,11 @@ namespace LibraryDbSim
             //Validate Account details
             if (AccountValid(UsernameTxtBox.Text, DatabaseConnection.EncryptTextToCipher(PasswordTxtBox.Password), out int error))
             {
-                AccountWindow accWind = new AccountWindow(UsernameTxtBox.Text);     //Pass data on before closing
-                accWind.Show();
-                this.Close();
+                windowFrame.Navigate(new Uri("TestPage.xaml", UriKind.RelativeOrAbsolute));
+
+                //AccountWindow accWind = new AccountWindow(UsernameTxtBox.Text);     //Pass data on before closing
+                //accWind.Show();
+                //this.Close();
                 return;
             }
 
