@@ -108,8 +108,7 @@ namespace LibraryDbSim
 
         private void ChangeAccountSettings(object sender, RoutedEventArgs e)
         {
-            ResetPassword resetPasswordWindow = new ResetPassword();
-            resetPasswordWindow.ShowDialog();
+            NavigationService.Navigate(new Uri("ResetPasswordPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void ExtendBookDuration(object sender, RoutedEventArgs e)

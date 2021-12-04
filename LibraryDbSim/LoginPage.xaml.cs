@@ -59,8 +59,7 @@ namespace LibraryDbSim
 
         private void ForgotPassword_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ResetPassword resetPasswordWindow = new ResetPassword();
-            resetPasswordWindow.ShowDialog();
+            NavigationService.Navigate(new Uri("ResetPasswordPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private bool AccountValid(string email, string password, out int errorFlag)

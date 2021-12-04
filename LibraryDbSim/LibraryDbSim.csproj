@@ -111,8 +111,8 @@
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ResetPassword.xaml.cs">
-      <DependentUpon>ResetPassword.xaml</DependentUpon>
+    <Compile Include="ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectRentTime.xaml.cs">
       <DependentUpon>SelectRentTime.xaml</DependentUpon>
@@ -151,7 +151,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ResetPassword.xaml">
+    <Page Include="ResetPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
