@@ -97,8 +97,8 @@
     <Compile Include="AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookList.xaml.cs">
-      <DependentUpon>BookList.xaml</DependentUpon>
+    <Compile Include="BookListPage.xaml.cs">
+      <DependentUpon>BookListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
@@ -114,14 +114,14 @@
     <Compile Include="ResetPasswordPage.xaml.cs">
       <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectRentTime.xaml.cs">
-      <DependentUpon>SelectRentTime.xaml</DependentUpon>
+    <Compile Include="SelectRentTimePage.xaml.cs">
+      <DependentUpon>SelectRentTimePage.xaml</DependentUpon>
     </Compile>
     <Page Include="AccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BookList.xaml">
+    <Page Include="BookListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,7 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectRentTime.xaml">
+    <Page Include="SelectRentTimePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

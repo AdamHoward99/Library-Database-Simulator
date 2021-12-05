@@ -25,16 +25,12 @@ C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Numerics.Vectors.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\de\MahApps.Metro.resources.dll
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.g.cs
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTime.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.cache
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.lref
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.baml
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.baml
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTime.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.g.resources
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.Properties.Resources.resources
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csproj.GenerateResource.cache
@@ -52,3 +48,7 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPasswordPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPasswordPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDurationPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDurationPage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookListPage.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookListPage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTimePage.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTimePage.baml
