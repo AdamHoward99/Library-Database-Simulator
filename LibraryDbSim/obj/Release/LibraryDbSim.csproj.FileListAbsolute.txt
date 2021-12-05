@@ -26,7 +26,6 @@ C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Runtime.CompilerServ
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\adamh\source\repos\LibraryDbSim\bin\Release\de\MahApps.Metro.resources.dll
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.g.cs
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDuration.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTime.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.g.cs
@@ -34,7 +33,6 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim_MarkupCompile.lref
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\App.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookList.baml
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDuration.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\MainWindow.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTime.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.g.resources
@@ -44,8 +42,6 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csproj.CoreCom
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csproj.CopyComplete
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.exe
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.pdb
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.g.cs
-C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\TestPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\CreateAccountPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LoginPage.g.cs
@@ -54,3 +50,5 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\AccountPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPasswordPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ResetPasswordPage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDurationPage.g.cs
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\ExtendDurationPage.baml

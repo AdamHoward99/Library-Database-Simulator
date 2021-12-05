@@ -118,9 +118,9 @@ namespace LibraryDbSim
                 return;
 
             //Get selected rows information and pass to duration window
-            DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];        //COULD MOVE THIS TO CLASS DEFINITION OR FIND MORE OPTIMIZABLE WAY
-            ExtendDuration extendDuration = new ExtendDuration(selectedRow);
-            extendDuration.ShowDialog();        //MORE OPTIMIZABLE WAY OF DOING SHOW DIALOG?
+            DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
+            ExtendDurationPage page = new ExtendDurationPage(selectedRow);
+            NavigationService.Navigate(page);
         }
 
         private void GetAccountInformation(string email)

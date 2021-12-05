@@ -104,8 +104,8 @@
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnection.cs" />
-    <Compile Include="ExtendDuration.xaml.cs">
-      <DependentUpon>ExtendDuration.xaml</DependentUpon>
+    <Compile Include="ExtendDurationPage.xaml.cs">
+      <DependentUpon>ExtendDurationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LibrarySystem.cs" />
     <Compile Include="LoginPage.xaml.cs">
@@ -129,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExtendDuration.xaml">
+    <Page Include="ExtendDurationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,10 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectRentTime.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

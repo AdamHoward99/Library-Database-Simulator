@@ -1,0 +1,62 @@
+﻿<Page x:Class="LibraryDbSim.ExtendDurationPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryDbSim"
+        mc:Ignorable="d"
+        Title="Extend Book Duration" Height="460" Width="735">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="235"/>
+            <ColumnDefinition Width="255"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="115"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label
+            x:Name="ExtendLbl"
+            Content="Select New Return Date"
+            Grid.Column="1"
+            FontSize="22"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Bottom"
+            VerticalAlignment="Bottom"/>
+
+        <DatePicker
+            x:Name="ExtendDatePicker"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10,40,10,160" 
+            FirstDayOfWeek="Monday"
+            Focusable="False">
+        </DatePicker>
+
+        <Button
+            x:Name="ConfirmBtn"
+            Content="Confirm Date"
+            Grid.Column="1"
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            Margin="10,0,115,30"
+            Style="{DynamicResource MahApps.Styles.Button.Square}"
+            FontSize="20" Click="ConfirmBtn_Click">
+        </Button>
+
+        <Button
+            x:Name="CancelBtn"
+            Content="Cancel"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="170, 15, 10, 30"
+            VerticalAlignment="Bottom"
+            Style="{DynamicResource MahApps.Styles.Button.Square}"
+            FontSize="20" Click="CancelBtn_Click">
+        </Button>
+    </Grid>
+</Page>
