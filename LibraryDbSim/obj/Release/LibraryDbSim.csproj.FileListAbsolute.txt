@@ -52,3 +52,4 @@ C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookListPage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\BookListPage.baml
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTimePage.g.cs
 C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\SelectRentTimePage.baml
+C:\Users\adamh\source\repos\LibraryDbSim\obj\Release\LibraryDbSim.csprojAssemblyReference.cache
