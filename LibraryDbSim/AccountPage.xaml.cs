@@ -58,7 +58,9 @@ namespace LibraryDbSim
             DataRow selectedRow = accountBookOrders.Rows[RentedBooksData.SelectedIndex];
 
             //Add to the stock of the book
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "UPDATE bookcollection SET bookStock = bookStock + 1 WHERE bookName = @bookName";
             DatabaseConnection.cmd.Parameters.AddWithValue("@bookName", selectedRow["bookName"]);
             DatabaseConnection.cmd.ExecuteNonQuery();
@@ -94,7 +96,9 @@ namespace LibraryDbSim
         private void GetAccountInformation(string email)
         {
             //Get name of user and accID from database
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "SELECT accId, name FROM accounts WHERE email = @email";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
             DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
@@ -114,7 +118,9 @@ namespace LibraryDbSim
         private void GetBookOrders()
         {
             //Get all book orders which contain this account id
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "SELECT * FROM rentedbookorders where accID = @accID";
             DatabaseConnection.cmd.Parameters.AddWithValue("@accID", thisAccount.AccountID);
             accountBookOrders.Load(DatabaseConnection.cmd.ExecuteReader());

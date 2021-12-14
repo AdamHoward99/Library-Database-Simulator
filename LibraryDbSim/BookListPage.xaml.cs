@@ -16,7 +16,9 @@ namespace LibraryDbSim
             InitializeComponent();
 
             //Get All available books on system (stock > 0) from database
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "SELECT * FROM bookcollection where (bookStock > 0)";
             bookListData.Load(DatabaseConnection.cmd.ExecuteReader());
             dataGrid.ItemsSource = bookListData.DefaultView;

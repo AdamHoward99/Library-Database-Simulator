@@ -63,7 +63,8 @@ namespace LibraryDbSim
 
         private bool CheckNewUserPassword(string email, string newPassword)
         {
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return false;
 
             //Find user with selected email and make sure password is different
             DatabaseConnection.cmd.CommandText = "SELECT * FROM accounts WHERE (email = @email AND password != @password)";

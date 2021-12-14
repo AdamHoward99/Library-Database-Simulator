@@ -29,7 +29,9 @@ namespace LibraryDbSim
                 return;
 
             //Update book order with new date in rentedbookorder table on db
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "UPDATE rentedbookorders SET returnDate = @returnDate WHERE orderID = @orderID";
             DatabaseConnection.cmd.Parameters.AddWithValue("@returnDate", ExtendDatePicker.SelectedDate.Value);
             DatabaseConnection.cmd.Parameters.AddWithValue("@orderID", selectedItemRow["orderID"]);

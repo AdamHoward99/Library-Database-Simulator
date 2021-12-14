@@ -12,10 +12,26 @@ namespace LibraryDbSim
         public static MySqlCommand cmd = new MySqlCommand("", conn);
         public static MySqlDataReader reader;
         private const string key = "JN34S0WN47_12121";
+
         public static void CloseAll()      //Disconnects both reader and conn variables
         {
             reader.Close();
             conn.Close();
+        }
+
+        public static bool TryConnection()
+        {
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return false;
+            }
+
+            return true;
         }
 
         public static string EncryptTextToCipher(string text)

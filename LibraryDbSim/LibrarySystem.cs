@@ -4,7 +4,8 @@
     {
         public bool AvailableEmailAddress(string email)
         {
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return false;
 
             DatabaseConnection.cmd.CommandText = "SELECT accID FROM accounts WHERE (email = @email)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
@@ -24,7 +25,9 @@
 
         public void AddAccountToSystem(int age, string name, string email, string password)
         {
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "INSERT INTO accounts (email, password, name, age) VALUES(@email, @password, @name, @age)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
             DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);

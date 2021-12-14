@@ -42,7 +42,7 @@ namespace LibraryDbSim
             }
 
             //Output correct error based on returning error value from AccountValid function
-            UpdateErrorLabel(error == 0 ? "Entered email is incorrect!" : "Entered password is incorrect!");
+            UpdateErrorLabel(error == 0 ? "Entered Credentials are incorrect!" : "Cannot Connect to Database");
             ForgotPasswordLbl.Visibility = Visibility.Visible;
         }
 
@@ -64,14 +64,18 @@ namespace LibraryDbSim
 
         private bool AccountValid(string email, string password, out int errorFlag)
         {
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+            {
+                errorFlag = 1;
+                return false;
+            }
             DatabaseConnection.cmd.CommandText = "SELECT accID FROM accounts WHERE (email = @email AND password = @password)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@email", email);
             DatabaseConnection.cmd.Parameters.AddWithValue("@password", password);
             DatabaseConnection.reader = DatabaseConnection.cmd.ExecuteReader();
             if (DatabaseConnection.reader.HasRows)     //Account found that matches information, account is valid
             {
-                errorFlag = 1;
+                errorFlag = 0;
                 DatabaseConnection.cmd.Parameters.Clear();
                 DatabaseConnection.CloseAll();
                 return true;

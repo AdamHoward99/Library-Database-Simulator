@@ -25,7 +25,9 @@ namespace LibraryDbSim
             BookListPage.chosenBook.ReturnDate = ReturnDatePicker.SelectedDate.Value;
 
             //Check if book is already rented by this used
-            DatabaseConnection.conn.Open();
+            if (!DatabaseConnection.TryConnection())
+                return;
+
             DatabaseConnection.cmd.CommandText = "SELECT orderID FROM rentedbookorders where (accID = @accID AND bookName = @bookName)";
             DatabaseConnection.cmd.Parameters.AddWithValue("@accID", AccountPage.thisAccount.AccountID);
             DatabaseConnection.cmd.Parameters.AddWithValue("@bookName", BookListPage.chosenBook.Name);
