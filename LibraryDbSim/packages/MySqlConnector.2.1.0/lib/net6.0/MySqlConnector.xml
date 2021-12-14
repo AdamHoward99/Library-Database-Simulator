@@ -975,6 +975,14 @@
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> representing the new database transaction.</returns>
             <remarks>Transactions may not be nested.</remarks>
         </member>
+        <member name="M:MySqlConnector.MySqlConnection.BeginDbTransactionAsync(System.Data.IsolationLevel,System.Threading.CancellationToken)">
+            <summary>
+            Begins a database transaction asynchronously.
+            </summary>
+            <param name="isolationLevel">The <see cref="T:System.Data.IsolationLevel"/> for the transaction.</param>
+            <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/> representing the new database transaction.</returns>
+        </member>
         <member name="M:MySqlConnector.MySqlConnection.ResetConnectionAsync(System.Threading.CancellationToken)">
             <summary>
             Resets the session state of the current open connection; this clears temporary tables and user-defined variables.
@@ -1512,6 +1520,16 @@
             Returns <c>false</c>.
             </summary>
             <remarks><see cref="T:System.Data.Common.DbDataSourceEnumerator"/> is not supported by MySqlConnector.</remarks>
+        </member>
+        <member name="P:MySqlConnector.MySqlConnectorFactory.CanCreateCommandBuilder">
+            <summary>
+            Returns <c>true</c>.
+            </summary>
+        </member>
+        <member name="P:MySqlConnector.MySqlConnectorFactory.CanCreateDataAdapter">
+            <summary>
+            Returns <c>true</c>.
+            </summary>
         </member>
         <member name="M:MySqlConnector.MySqlConnectorFactory.CreateBatch">
             <summary>
@@ -5958,26 +5976,6 @@
             SESSION_TRACK_GTIDS: "track GTIDs" changed
             </summary>
         </member>
-        <member name="T:MySqlConnector.Utilities.Adler32">
-            <summary>
-            Calculates the 32 bit Adler checksum of a given buffer according to
-            RFC 1950. ZLIB Compressed Data Format Specification version 3.3)
-            </summary>
-        </member>
-        <member name="F:MySqlConnector.Utilities.Adler32.SeedValue">
-            <summary>
-            The default initial seed value of a Adler32 checksum calculation.
-            </summary>
-        </member>
-        <member name="M:MySqlConnector.Utilities.Adler32.Calculate(System.ReadOnlySpan{System.Byte},System.UInt32,System.UInt32)">
-            <summary>
-            Calculates the Adler32 checksum with the bytes taken from the span.
-            </summary>
-            <param name="buffer">The readonly span of bytes.</param>
-            <param name="offset">The offset.</param>
-            <param name="length">The length.</param>
-            <returns>The <see cref="T:System.UInt32"/>.</returns>
-        </member>
         <member name="F:MySqlConnector.Utilities.Constants.InfiniteTimeout">
             <summary>
             A sentinel value indicating no (or infinite) timeout.
@@ -6013,7 +6011,7 @@
             <param name="id">The timer ID (returned from <see cref="M:MySqlConnector.Utilities.TimerQueue.Add(System.Int32,System.Action)"/>).</param>
             <returns><c>true</c> if the timer was removed; otherwise, <c>false</c>. This method will return <c>false</c> if the specified timer has already fired.</returns>
         </member>
-        <member name="M:MySqlConnector.Utilities.Utility.GetRsaParameters(System.String)">
+        <member name="M:MySqlConnector.Utilities.Utility.LoadRsaParameters(System.String,System.Security.Cryptography.RSA)">
             <summary>
             Loads a RSA key from a PEM string.
             </summary>
@@ -6058,24 +6056,6 @@
             Resizes <paramref name="resizableArray"/> to hold at least <paramref name="newLength"/> items.
             </summary>
             <remarks><paramref name="resizableArray"/> may be <c>null</c>, in which case a new <see cref="T:MySqlConnector.Utilities.ResizableArray`1"/> will be allocated.</remarks>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
-            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
-            <summary>Specifies that an output will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
-            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified return value condition.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
         </member>
     </members>
 </doc>

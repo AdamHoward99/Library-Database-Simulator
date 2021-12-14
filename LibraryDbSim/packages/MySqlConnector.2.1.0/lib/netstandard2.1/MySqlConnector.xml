@@ -975,6 +975,14 @@
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> representing the new database transaction.</returns>
             <remarks>Transactions may not be nested.</remarks>
         </member>
+        <member name="M:MySqlConnector.MySqlConnection.BeginDbTransactionAsync(System.Data.IsolationLevel,System.Threading.CancellationToken)">
+            <summary>
+            Begins a database transaction asynchronously.
+            </summary>
+            <param name="isolationLevel">The <see cref="T:System.Data.IsolationLevel"/> for the transaction.</param>
+            <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.ValueTask`1"/> representing the new database transaction.</returns>
+        </member>
         <member name="M:MySqlConnector.MySqlConnection.ResetConnectionAsync(System.Threading.CancellationToken)">
             <summary>
             Resets the session state of the current open connection; this clears temporary tables and user-defined variables.
@@ -1512,6 +1520,16 @@
             Returns <c>false</c>.
             </summary>
             <remarks><see cref="T:System.Data.Common.DbDataSourceEnumerator"/> is not supported by MySqlConnector.</remarks>
+        </member>
+        <member name="P:MySqlConnector.MySqlConnectorFactory.CanCreateCommandBuilder">
+            <summary>
+            Returns <c>true</c>.
+            </summary>
+        </member>
+        <member name="P:MySqlConnector.MySqlConnectorFactory.CanCreateDataAdapter">
+            <summary>
+            Returns <c>true</c>.
+            </summary>
         </member>
         <member name="M:MySqlConnector.MySqlConnectorFactory.CreateBatch">
             <summary>
@@ -6058,24 +6076,6 @@
             Resizes <paramref name="resizableArray"/> to hold at least <paramref name="newLength"/> items.
             </summary>
             <remarks><paramref name="resizableArray"/> may be <c>null</c>, in which case a new <see cref="T:MySqlConnector.Utilities.ResizableArray`1"/> will be allocated.</remarks>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
-            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
-            <summary>Specifies that an output will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
-            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified return value condition.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
         </member>
     </members>
 </doc>
