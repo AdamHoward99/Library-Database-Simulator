@@ -80,7 +80,7 @@
         <Button
             x:Name="CancelBtn"
             Click="CancelBtn_Click"
-            Content="Go Back"
+            Content="Back"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             FontSize="20"

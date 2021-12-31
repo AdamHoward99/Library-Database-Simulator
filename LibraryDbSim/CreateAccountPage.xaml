@@ -10,8 +10,8 @@
    Title="Create Account" Height="460" Width="735">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="115"/>
-            <RowDefinition Height="230"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="205"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -28,7 +28,7 @@
             FontSize="28" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Bottom" 
-            Margin="0, 0, 0, 10">
+            Margin="57,0,58,10" Height="47" Width="130">
         </Label>
 
         <TextBox 
@@ -43,7 +43,7 @@
             BorderThickness="1.5" 
             PreviewTextInput="LetterTextBox_PreviewTextInput" 
             DataObject.Pasting="LetterTextBox_Pasting"
-            mah:TextBoxHelper.Watermark="Enter Name">
+            mah:TextBoxHelper.Watermark="Enter Name" Height="30">
         </TextBox>
 
         <TextBox 
@@ -58,7 +58,7 @@
             BorderThickness="1.5"
             PreviewTextInput="NumberTextBox_PreviewTextInput" 
             DataObject.Pasting="NumberTextBox_Pasting"
-            mah:TextBoxHelper.Watermark="Enter Age">
+            mah:TextBoxHelper.Watermark="Enter Age" Height="30">
         </TextBox>
 
         <TextBox 
@@ -71,7 +71,7 @@
             Margin="15, 90, 15, 0" 
             FontSize="14" 
             BorderThickness="1.5"
-            mah:TextBoxHelper.Watermark="Enter Email Address">
+            mah:TextBoxHelper.Watermark="Enter Email Address" Height="30">
         </TextBox>
 
         <PasswordBox 
@@ -83,7 +83,7 @@
             Margin="15, 130, 15, 0" 
             FontSize="14" 
             BorderThickness="1.5"
-            mah:TextBoxHelper.Watermark="Enter Password">
+            mah:TextBoxHelper.Watermark="Enter Password" Height="30">
         </PasswordBox>
 
         <Button 
@@ -92,23 +92,26 @@
             Grid.Column="1" 
             Grid.Row="2" 
             VerticalAlignment="Top" 
-            Margin="70, 0, 70, 0" 
+            Margin="15,0,125,0" 
             FontSize="20" 
             VerticalContentAlignment="Center" 
             Click="SignUpBtn_Click"
-            Style="{DynamicResource MahApps.Styles.Button.Square}">
+            Style="{DynamicResource MahApps.Styles.Button.Square}" Height="39">
         </Button>
 
         <Button
             Name="returnBtn"
-            Content="Go Back"
+            Content="Back"
             Style="{DynamicResource MahApps.Styles.Button.Square}"
             Click="ReturnBtn_Click"
             FontSize="20"
             VerticalContentAlignment="Center"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Width="100">
+            Width="100" 
+            Grid.Column="1" 
+            Margin="135,0,0,0" 
+            Grid.Row="2" Height="39">
         </Button>
 
         <Label 
@@ -120,7 +123,7 @@
             Margin="10, 0, 10, 20"
             FontSize="16"
             HorizontalContentAlignment="Center" 
-            Visibility="Hidden">
+            Visibility="Hidden" Height="31">
         </Label>
     </Grid>
 </Page>
