@@ -3,9 +3,9 @@
 
 The purpose of this application is to serve as an example project utilizing WPF and C# to deliver a typical Software Engineering client-requested application. It also serves as an example of an effective way to use an SQL database to store data for a WPF application. This application is supported on Windows OS.</p>
 
-## Screenshot
+## Screenshots
 <p align="center">
-  <img alt ="IMAGE OR VIDEO OF APPLICATION" src = ""/>
+  <img alt ="IMAGE OR VIDEO OF APPLICATION" src = "https://user-images.githubusercontent.com/74617187/147849728-3f88ab9d-e3c9-4f7d-8694-4e7e2934f236.png">
 </p>
   
 ## How To Use
@@ -22,6 +22,8 @@ The information for the database credentials is encrypted and stored on <i>line 
   - Account Table Name: accounts (<b>PK:</b> accID, email, password, name, age)
   - Book Table Name: bookcollection (<b>PK:</b> bookID, bookName, bookAuthor, bookStock, bookCategory)
   - Book Orders Table Name: rentedbookorders (<b>PK:</b> orderID, accID, bookName, rentDate, returnDate)
+
+A video demonstration is available here: https://youtu.be/XH9S7J1GkrA
 
 ## Built With
 - C#
