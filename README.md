@@ -1,7 +1,7 @@
 <h1 align="center">WPF Library Database Simulator</h1>
-<p align="center">This project is a C# WPF demo for a library database simulator. Some of the features added into this demo include full functionality with an SQL database which stores user information (Email Address, Passwords, Books rented etc.) and an account system which allows a variety of users to interact with the application to record book rentings and returns. This applications model is based on existing systems commonly found within libraries.
+<p align="center">This project is a C# WPF demo for a library database simulator. Some of the features added into this demo include full functionality with an SQL database which stores user information (Email Address, Passwords, Books rented etc.) and an account system which allows a variety of users to interact with the application to record book rentings and returns. This applications model is based on existing systems commonly found within libraries.</p>
 
-The purpose of this application is to serve as an example project utilizing WPF and C# to deliver a typical Software Engineering client-requested application. It also serves as an example of an effective way to use an SQL database to store data for a WPF application. This application is supported on Windows OS.</p>
+<p align="center">The purpose of this application is to serve as an example project utilizing WPF and C# to deliver a typical Software Engineering client-requested application. It also serves as an example of an effective way to use an SQL database to store data for a WPF application. This application is supported on Windows OS.</p>
 
 ## Screenshots
 <p align="center">
